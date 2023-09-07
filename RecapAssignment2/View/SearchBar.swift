@@ -26,7 +26,7 @@ final class SearchBar: UISearchBar {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func buttonColor() {
+    private func buttonColor() {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "검색어를 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }

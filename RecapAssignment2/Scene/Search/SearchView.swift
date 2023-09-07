@@ -19,15 +19,50 @@ class SearchView: BaseView {
         return view
     }()
     
+    let accuracySortButton = {
+        let view = SortButton()
+        view.setTitle(title: " 정확도 ")
+        return view
+    }()
+    
+    let dateSortButton = {
+        let view = SortButton()
+        view.setTitle(title: " 날짜순 ")
+        return view
+    }()
+    
+    let highSortButton = {
+        let view = SortButton()
+        view.setTitle(title: " 가격높은순 ")
+        return view
+    }()
+    
+    let lowSortButton = {
+        let view = SortButton()
+        view.setTitle(title: " 가격낮은순 ")
+        return view
+    }()
+    
+    
     let searchBar = {
         let view = SearchBar()
         
         return view
     }()
     
+    let buttonView = {
+        let view = UIView()
+        return view
+    }()
+    
     override func configure() {
         addSubview(searchBar)
+        addSubview(buttonView)
         addSubview(collectionView)
+        buttonView.addSubview(accuracySortButton)
+        buttonView.addSubview(dateSortButton)
+        buttonView.addSubview(highSortButton)
+        buttonView.addSubview(lowSortButton)
         
     }
     
@@ -38,9 +73,35 @@ class SearchView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
         }
         
-        collectionView.snp.makeConstraints { make in
+        buttonView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(10)
+            make.leading.equalTo(10)
+            make.trailing.greaterThanOrEqualTo(-10)
+            make.height.equalTo(30)
+        }
+        
+        accuracySortButton.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(buttonView)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(20)
+        }
+        dateSortButton.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(buttonView)
+            make.leading.equalTo(accuracySortButton.snp.trailing).offset(8)
+        }
+        highSortButton.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(buttonView)
+            make.leading.equalTo(dateSortButton.snp.trailing).offset(8)
+        }
+        lowSortButton.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(buttonView)
+            make.leading.equalTo(highSortButton.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualTo(safeAreaLayoutGuide).offset(-10)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(buttonView.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            
         }
         
     }
