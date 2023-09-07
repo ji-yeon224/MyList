@@ -30,6 +30,7 @@
 		CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */; };
 		CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */; };
 		CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */; };
+		CEA65D202AAA302700B6CDA4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemImageView.swift; path = ../../../../../../.Trash/ItemImageView.swift; sourceTree = "<group>"; };
 		CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFomatter+Extension.swift"; sourceTree = "<group>"; };
 		CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */,
 				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
 				CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */,
+				CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */,
 				CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */,
 				CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */,
+				CEA65D202AAA302700B6CDA4 /* UIViewController+Extension.swift in Sources */,
 				CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */,
 				CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */,
 				CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */,

@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configure()
         setConstraints()
+        
     }
     
     func configure() {
@@ -24,6 +25,8 @@ class BaseViewController: UIViewController {
         
     }
     
+   
+    
     func showAlertMessage(title: String, handler: (() -> ())?) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
@@ -33,5 +36,7 @@ class BaseViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    
     
 }

@@ -14,6 +14,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = mainView
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func configure() {
