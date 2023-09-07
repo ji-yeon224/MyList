@@ -23,6 +23,13 @@
 		CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D032AA9E88400B6CDA4 /* ReusableProtocol.swift */; };
 		CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D052AA9ED1500B6CDA4 /* SearchViewController.swift */; };
 		CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */; };
+		CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */; };
+		CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D0F2AA9F80E00B6CDA4 /* SearchBar.swift */; };
+		CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D112AAA0A8E00B6CDA4 /* Design.swift */; };
+		CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D132AAA0B5B00B6CDA4 /* CollectionViewCell.swift */; };
+		CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */; };
+		CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */; };
+		CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,13 @@
 		CEA65D032AA9E88400B6CDA4 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		CEA65D052AA9ED1500B6CDA4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CEA65D0F2AA9F80E00B6CDA4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		CEA65D112AAA0A8E00B6CDA4 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		CEA65D132AAA0B5B00B6CDA4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection\U0010ViewCell.swift"; sourceTree = "<group>"; };
+		CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemImageView.swift; path = ../../../../../../.Trash/ItemImageView.swift; sourceTree = "<group>"; };
+		CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFomatter+Extension.swift"; sourceTree = "<group>"; };
+		CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				CEA65CFA2AA9DCD600B6CDA4 /* Cell */,
+				CEA65D0F2AA9F80E00B6CDA4 /* SearchBar.swift */,
+				CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */,
+				CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +154,9 @@
 		CEA65CED2AA9D9D400B6CDA4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */,
+				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
+				CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -153,6 +173,7 @@
 		CEA65CFA2AA9DCD600B6CDA4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CEA65D132AAA0B5B00B6CDA4 /* CollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -244,10 +265,17 @@
 				CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */,
 				CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */,
 				CEA65CFE2AA9DD7800B6CDA4 /* BaseViewController.swift in Sources */,
+				CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */,
+				CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */,
 				CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */,
 				CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */,
+				CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */,
 				CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */,
+				CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */,
+				CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */,
+				CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */,
 				CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */,
+				CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

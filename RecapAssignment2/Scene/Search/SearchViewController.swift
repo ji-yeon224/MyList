@@ -18,6 +18,7 @@ class SearchViewController: BaseViewController {
     
     override func configure() {
         super.configure()
+        title = "쇼핑검색"
     }
     
     override func setConstraints() {
