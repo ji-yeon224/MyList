@@ -21,6 +21,8 @@
 		CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CFF2AA9DD8200B6CDA4 /* BaseView.swift */; };
 		CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D012AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift */; };
 		CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D032AA9E88400B6CDA4 /* ReusableProtocol.swift */; };
+		CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D052AA9ED1500B6CDA4 /* SearchViewController.swift */; };
+		CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CEA65CFF2AA9DD8200B6CDA4 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CEA65D012AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEA65D032AA9E88400B6CDA4 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		CEA65D052AA9ED1500B6CDA4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		CEA65CF92AA9DCBF00B6CDA4 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				CEA65D052AA9ED1500B6CDA4 /* SearchViewController.swift */,
+				CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -234,7 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */,
+				CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */,
 				CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */,
+				CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */,
 				CEA65CFE2AA9DD7800B6CDA4 /* BaseViewController.swift in Sources */,
 				CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */,
 				CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */,
