@@ -38,6 +38,9 @@
 		CEA65D2F2AAAE57300B6CDA4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D2E2AAAE57300B6CDA4 /* EndPoint.swift */; };
 		CEA65D322AAAE5E700B6CDA4 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D312AAAE5E700B6CDA4 /* URL+Extension.swift */; };
 		CEA65D342AAAE6D900B6CDA4 /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D332AAAE6D900B6CDA4 /* ItemStruct.swift */; };
+		CEA65D372AAAF2F400B6CDA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D362AAAF2F400B6CDA4 /* Error.swift */; };
+		CEA65D392AAAF4F500B6CDA4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D382AAAF4F500B6CDA4 /* Alert.swift */; };
+		CEA65D3B2AAB862E00B6CDA4 /* HtmlToString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D3A2AAB862D00B6CDA4 /* HtmlToString+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		CEA65D2E2AAAE57300B6CDA4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CEA65D312AAAE5E700B6CDA4 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		CEA65D332AAAE6D900B6CDA4 /* ItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
+		CEA65D362AAAF2F400B6CDA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		CEA65D382AAAF4F500B6CDA4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		CEA65D3A2AAB862D00B6CDA4 /* HtmlToString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HtmlToString+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 				CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */,
 				CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */,
 				CEA65D212AAA34AF00B6CDA4 /* SortButton.swift */,
+				CEA65D382AAAF4F500B6CDA4 /* Alert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 				CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */,
 				CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */,
 				CEA65D312AAAE5E700B6CDA4 /* URL+Extension.swift */,
+				CEA65D3A2AAB862D00B6CDA4 /* HtmlToString+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 		CEA65D352AAAEAD600B6CDA4 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				CEA65D362AAAF2F400B6CDA4 /* Error.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -317,12 +326,15 @@
 				CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */,
 				CEA65D342AAAE6D900B6CDA4 /* ItemStruct.swift in Sources */,
 				CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */,
+				CEA65D3B2AAB862E00B6CDA4 /* HtmlToString+Extension.swift in Sources */,
 				CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */,
+				CEA65D392AAAF4F500B6CDA4 /* Alert.swift in Sources */,
 				CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */,
 				CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */,
 				CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */,
 				CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */,
 				CEA65D322AAAE5E700B6CDA4 /* URL+Extension.swift in Sources */,
+				CEA65D372AAAF2F400B6CDA4 /* Error.swift in Sources */,
 				CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

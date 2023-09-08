@@ -12,6 +12,7 @@ import Alamofire
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
+    let group = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +20,45 @@ class SearchViewController: BaseViewController {
         self.view = mainView
         self.hideKeyboardWhenTappedAround()
         
-        NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: "캠핑카") { value in
-            print("error")
-            print(value)
+        callRequest()
+        
+        group.notify(queue: .main) {
+            self.mainView.collectionView.reloadData()
         }
+        
     }
     
     override func configure() {
         super.configure()
-        title = "쇼핑검색"
+        title = "상품 검색"
     }
     
     
+}
+
+extension SearchViewController {
+    func callRequest() {
+        group.enter()
+        do {
+            try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: "캠핑카") { data in
+                //print(data)
+                self.mainView.items = data.items
+                //print(data.items)
+                self.group.leave()
+            } faliureHandler: { error in
+                print(error)
+                self.showAlertMessage(title: "error") {
+                    
+                }
+                
+            }
+            
+        } catch {
+            print()
+        }
+        
+        
+    }
 }
 
 extension SearchViewController: CollectionViewProtocol {

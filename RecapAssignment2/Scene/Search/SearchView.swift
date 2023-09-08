@@ -10,6 +10,7 @@ import UIKit
 class SearchView: BaseView {
     
     var delegate: CollectionViewProtocol?
+    var items: [ItemElement] = []
     
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
@@ -124,17 +125,30 @@ class SearchView: BaseView {
 extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        print(items, items.count)
+        return items.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        
+        //cell.titleLabel.text = items[indexPath.row].title
+        print(items[indexPath.row].title)
+        cell.titleLabel.text = items[indexPath.row].title.htmlToString()
+        
+        
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectRowItemAt(indexPath: indexPath)
     }
     
+    
+    
 }
+
+
+
