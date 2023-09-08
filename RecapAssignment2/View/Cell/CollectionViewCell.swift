@@ -33,7 +33,7 @@ class CollectionViewCell: BaseCollctionViewCell {
     let titleLabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
-        view.font = .systemFont(ofSize: 13)
+        view.font = .systemFont(ofSize: 14)
         view.numberOfLines = 2
         view.text = "title"
         return view
