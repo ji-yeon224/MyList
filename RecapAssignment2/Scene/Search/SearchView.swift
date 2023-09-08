@@ -9,6 +9,8 @@ import UIKit
 
 class SearchView: BaseView {
     
+    var delegate: CollectionViewProtocol?
+    
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
         view.dataSource = self
@@ -131,6 +133,9 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectRowItemAt(indexPath: indexPath)
     }
     
 }

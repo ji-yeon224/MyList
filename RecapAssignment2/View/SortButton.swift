@@ -11,12 +11,12 @@ final class SortButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+         
         backgroundColor = Constants.Color.background
         tintColor = Constants.Color.tintColor
         titleLabel?.font = .systemFont(ofSize: 13)
         
-        invalidateIntrinsicContentSize()
+        //invalidateIntrinsicContentSize()
         layer.cornerRadius = 5
         layer.borderWidth = Constants.Design.borderWidth
         layer.borderColor = Constants.Color.tintColor.cgColor
@@ -36,11 +36,7 @@ final class SortButton: UIButton {
     }
     
     
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width + contentEdgeInsets.left + contentEdgeInsets.right + titleEdgeInsets.left + titleEdgeInsets.right,
-                      height: super.intrinsicContentSize.height + contentEdgeInsets.top + contentEdgeInsets.bottom + titleEdgeInsets.top
-                        + titleEdgeInsets.bottom )
-    }
+
     
     
 }

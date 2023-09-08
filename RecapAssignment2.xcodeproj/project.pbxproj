@@ -32,6 +32,8 @@
 		CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */; };
 		CEA65D202AAA302700B6CDA4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */; };
 		CEA65D222AAA34AF00B6CDA4 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D212AAA34AF00B6CDA4 /* SortButton.swift */; };
+		CEA65D242AAA9D8C00B6CDA4 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D232AAA9D8C00B6CDA4 /* APIKey.swift */; };
+		CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		CEA65D1D2AAA2CAF00B6CDA4 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CEA65D212AAA34AF00B6CDA4 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		CEA65D232AAA9D8C00B6CDA4 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 		CEA65CE72AA9D7B200B6CDA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CEA65D232AAA9D8C00B6CDA4 /* APIKey.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
 				CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */,
 				CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */,
+				CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */,
+				CEA65D242AAA9D8C00B6CDA4 /* APIKey.swift in Sources */,
 				CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */,
 				CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */,
 				CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */,
@@ -281,6 +288,7 @@
 				CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */,
 				CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */,
 				CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */,
+				CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */,
 				CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */,
 				CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */,
 				CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */,

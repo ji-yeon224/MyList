@@ -7,14 +7,18 @@
 
 import UIKit
 
+
+
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.delegate = self
         self.view = mainView
         self.hideKeyboardWhenTappedAround()
+        
     }
     
     override func configure() {
@@ -28,4 +32,10 @@ class SearchViewController: BaseViewController {
     
     
     
+}
+
+extension SearchViewController: CollectionViewProtocol {
+    func didSelectRowItemAt(indexPath: IndexPath) {
+        print(indexPath)
+    }
 }
