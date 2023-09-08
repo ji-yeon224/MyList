@@ -48,7 +48,6 @@ class SearchView: BaseView {
     
     let searchBar = {
         let view = SearchBar()
-        
         return view
     }()
     

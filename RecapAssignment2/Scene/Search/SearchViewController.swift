@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 
 
 class SearchViewController: BaseViewController {
@@ -19,17 +19,16 @@ class SearchViewController: BaseViewController {
         self.view = mainView
         self.hideKeyboardWhenTappedAround()
         
+        NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: "캠핑카") { value in
+            print("error")
+            print(value)
+        }
     }
     
     override func configure() {
         super.configure()
         title = "쇼핑검색"
     }
-    
-    override func setConstraints() {
-        
-    }
-    
     
     
 }
