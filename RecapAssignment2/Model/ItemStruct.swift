@@ -21,6 +21,7 @@ struct ItemElement: Codable {
     let lprice, hprice: String
     let mallName: String
     let productID: String
+    var like: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case title, link, image, lprice, hprice, mallName

@@ -101,6 +101,7 @@ extension LikeView: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.imageView.image = UIImage(systemName: "cart")
         }
         
+        cell.likeButton.setImage(UIImage(systemName: "heart.fill")!, for: .normal)
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
         
         

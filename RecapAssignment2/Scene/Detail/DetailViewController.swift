@@ -36,17 +36,22 @@ class DetailViewController: BaseViewController, WKUIDelegate {
             return
         }
         title = task.title
+        like = task.like
+        print(like)
         
+        setNavigationItem()
     }
     
     
     override func configure() {
         super.configure()
-        setNavigationItem()
+        
+        
         
         navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         //바 틴트 바꾸는 것
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        
         
         guard let task = task else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
@@ -68,25 +73,64 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     
     func setNavigationItem() {
         navigationItem.backBarButtonItem?.title = "상품 검색"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: setLikeButtonImage(), style: .plain, target: self, action: #selector(likeButtonClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(likeButtonClicked))
+        changeNavBarButton()
         navigationItem.rightBarButtonItem?.tintColor = Constants.Color.tintColor
         navigationItem.titleView?.tintColor = Constants.Color.tintColor
         
     }
     
     @objc private func likeButtonClicked() {
+        guard let task = task else {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
+        
         like.toggle()
         
+        print(task)
+        changeNavBarButton()
+        
+//        if let task = repository.getItemByProductId(id: task.productId) { //이미 좋아요 누른 목록
+//            do {
+//                try repository.deleteItem(task)
+//            } catch {
+//                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+//                    return
+//                }
+//            }
+//
+//        } else {
+//
+//            do {
+//                try repository.createItem(task)
+//            } catch {
+//                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+//                    return
+//                }
+//            }
+//        }
         
         
-        navigationItem.rightBarButtonItem?.image = setLikeButtonImage()
+        
+        
     }
     
     func setLikeButtonImage() -> UIImage{
+        //print(like)
         if like {
             return UIImage(systemName: "heart.fill")!
         } else {
             return UIImage(systemName: "heart")!
+        }
+    }
+    
+    func changeNavBarButton() {
+        
+        if like {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+        } else {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchView: BaseView {
     
@@ -13,6 +14,7 @@ class SearchView: BaseView {
     var btnDelegate: LikeButtonProtocol?
     
     var items: [ItemElement] = []
+    private let repository = LikeItemRepository()
     
     lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
     lazy var collectionView = {
@@ -139,6 +141,19 @@ class SearchView: BaseView {
         
         return layout
     }
+    
+    // 좋아요 목록에 존재하는지
+    func isExistRecord(productId: String) -> LikeItem? {
+        let result = repository.getItemByProductId(id: productId)
+        return result
+    }
+    
+    // 하트 이미지 변경
+    func changeLikeButtonImage(like: Bool) -> UIImage {
+        let image = like ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
+        return image
+    }
+    
 }
 
 extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -177,6 +192,16 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             cell.imageView.image = UIImage(systemName: "cart")
         }
+        print(data.like)
+        //cell.likeButton.setImage(changeLikeButtonImage(like: data.like), for: .normal)
+        
+        // 좋아요 목록에 이미 존재한다면
+        
+        if isExistRecord(productId: data.productID) != nil {
+            cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
         return cell
@@ -185,11 +210,11 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     @objc private func likeButtonClicked(_ sender: UIButton) {
         if let cell  = sender.superview?.superview?.superview as? CollectionViewCell{
             if let indexPath = self.collectionView.indexPath(for: cell) {
+                items[indexPath.row].like.toggle()
+                cell.likeButton.setImage(changeLikeButtonImage(like: items[indexPath.row].like), for: .normal)
                 btnDelegate?.buttonClickedAction(indexPath: indexPath)
             }
         }
-        
-        
         
     }
     

@@ -34,6 +34,11 @@ final class SearchViewController: BaseViewController {
         print(repository.getRealmFilePath())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.collectionView.reloadData()
+    }
+    
     override func configure() {
         super.configure()
         
@@ -153,9 +158,11 @@ extension SearchViewController: LikeButtonProtocol {
     func buttonClickedAction(indexPath: IndexPath) {
         let item = mainView.items[indexPath.row]
         
+        
         if let task = repository.getItemByProductId(id: item.productID) { //이미 좋아요 누른 목록
             do {
                 try repository.deleteItem(task)
+                
             } catch {
                 showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
                     return
