@@ -148,8 +148,9 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        
+        print(indexPath.row)
         let data = items[indexPath.row]
+        
         
         cell.titleLabel.text = data.title.htmlToString()
         cell.mallLabel.text = data.mallName
@@ -183,8 +184,6 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectRowItemAt(indexPath: indexPath)
     }
-    
-    
     
 }
 

@@ -17,11 +17,13 @@ final class SearchViewController: BaseViewController {
     var searchKeyword = ""
     let sortAllCase = Sort.allCases
     var keyword = ""
+    var startIdx = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.delegate = self
         mainView.searchBar.delegate = self
+        mainView.collectionView.prefetchDataSource = self
         self.view = mainView
         
         
@@ -46,38 +48,40 @@ final class SearchViewController: BaseViewController {
     @objc func buttonClicked(_ sender: UIButton) {
         
         if keyword.count != 0 {
+            startIdx = 1
             sortType = sortAllCase[sender.tag]
-            callRequest(query: keyword, sort: sortType)
-            
+            mainView.items.removeAll()
+            callRequest(query: keyword, sort: sortType, startIdx: startIdx)
         }
         mainView.setSortDesign(button: sender)
         
+    
     }
     
     
 }
 
 extension SearchViewController {
-    func callRequest(query: String, sort: Sort) {
-        group.enter()
+    func callRequest(query: String, sort: Sort, startIdx: Int) {
         do {
-            try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort) { data in
-                self.mainView.items = data.items
-                self.group.leave()
+            try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort, startIdx: startIdx) { data in
+                self.mainView.items.append(contentsOf: data.items)
+                self.mainView.collectionView.reloadData()
+                if startIdx == 1 {
+                    self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+                }
             } faliureHandler: { error in
                 print(error)
                 self.showAlertMessage(title: "다시 시도해주세요.") { }
-                
+                return
             }
             
         } catch {
             showAlertMessage(title: "올바른 검색어를 입력해주세요.") { }
+            return
         }
         
-        group.notify(queue: .main) {
-            self.mainView.collectionView.reloadData()
-            self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        }
+        
     }
 }
 
@@ -87,6 +91,20 @@ extension SearchViewController: CollectionViewProtocol {
     }
 }
 
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            if mainView.items.count - 1 == indexPath.row {
+                startIdx += 30
+                callRequest(query: keyword, sort: sortType, startIdx: startIdx)
+            }
+        }
+        
+    }
+   
+}
+
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -94,13 +112,15 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         keyword = search
-        callRequest(query: search, sort: sortType)
+        callRequest(query: search, sort: sortType, startIdx: startIdx)
         view.endEditing(true)
+ 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == "" {
             keyword = ""
+            startIdx = 1
             mainView.items.removeAll()
             mainView.collectionView.reloadData()
         }
@@ -111,4 +131,6 @@ extension SearchViewController: UISearchBarDelegate {
         view.endEditing(true)
         
     }
+    
+    
 }

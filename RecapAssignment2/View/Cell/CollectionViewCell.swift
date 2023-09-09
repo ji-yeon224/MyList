@@ -94,4 +94,8 @@ class CollectionViewCell: BaseCollctionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        imageView.image = nil
+    }
+    
 }
