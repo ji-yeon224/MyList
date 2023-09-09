@@ -43,6 +43,9 @@
 		CEA65D3B2AAB862E00B6CDA4 /* HtmlToString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D3A2AAB862D00B6CDA4 /* HtmlToString+Extension.swift */; };
 		CEC437C62AAC101700EB15FC /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437C52AAC101700EB15FC /* Sort.swift */; };
 		CEC437C92AAC46C800EB15FC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437C82AAC46C800EB15FC /* DetailViewController.swift */; };
+		CEC437CE2AAC665100EB15FC /* LikeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437CD2AAC665100EB15FC /* LikeItem.swift */; };
+		CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */; };
+		CEC437D22AAC6C5C00EB15FC /* LikeItemRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,9 @@
 		CEA65D3A2AAB862D00B6CDA4 /* HtmlToString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HtmlToString+Extension.swift"; sourceTree = "<group>"; };
 		CEC437C52AAC101700EB15FC /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		CEC437C82AAC46C800EB15FC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CEC437CD2AAC665100EB15FC /* LikeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItem.swift; sourceTree = "<group>"; };
+		CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepository.swift; sourceTree = "<group>"; };
+		CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepositoryType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 		CEA65CEB2AA9D86700B6CDA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEC437CC2AAC663A00EB15FC /* Realm */,
 				CEA65D332AAAE6D900B6CDA4 /* ItemStruct.swift */,
 				CEC437C52AAC101700EB15FC /* Sort.swift */,
 			);
@@ -192,6 +199,7 @@
 				CEA65D302AAAE5D200B6CDA4 /* Extension */,
 				CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */,
 				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
+				CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -239,6 +247,15 @@
 				CEC437C82AAC46C800EB15FC /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		CEC437CC2AAC663A00EB15FC /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CEC437CD2AAC665100EB15FC /* LikeItem.swift */,
+				CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +353,7 @@
 				CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */,
 				CEA65D222AAA34AF00B6CDA4 /* SortButton.swift in Sources */,
 				CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */,
+				CEC437D22AAC6C5C00EB15FC /* LikeItemRepositoryType.swift in Sources */,
 				CEA65D202AAA302700B6CDA4 /* UIViewController+Extension.swift in Sources */,
 				CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */,
 				CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */,
@@ -348,8 +366,10 @@
 				CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */,
 				CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */,
 				CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */,
+				CEC437CE2AAC665100EB15FC /* LikeItem.swift in Sources */,
 				CEA65D322AAAE5E700B6CDA4 /* URL+Extension.swift in Sources */,
 				CEC437C62AAC101700EB15FC /* Sort.swift in Sources */,
+				CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */,
 				CEA65D372AAAF2F400B6CDA4 /* Error.swift in Sources */,
 				CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */,
 			);

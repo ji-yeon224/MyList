@@ -12,12 +12,13 @@ import Alamofire
 final class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
-    let group = DispatchGroup()
     var sortType: Sort = .sim
     var searchKeyword = ""
     let sortAllCase = Sort.allCases
     var keyword = ""
     var startIdx = 1
+    
+    let repository = LikeItemRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ final class SearchViewController: BaseViewController {
         mainView.searchBar.delegate = self
         mainView.collectionView.prefetchDataSource = self
         self.view = mainView
+        
         
         
     }
@@ -94,7 +96,7 @@ extension SearchViewController: CollectionViewProtocol {
         vc.item = item
         
         navigationController?.pushViewController(vc, animated: true)
-        
+
         
         
     }

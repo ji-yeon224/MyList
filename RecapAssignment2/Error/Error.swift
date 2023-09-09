@@ -12,3 +12,10 @@ enum ValidationError: Error {
     case isNotInt
     
 }
+
+enum DataBaseError: Error {
+    case createError
+    case updateError
+    case deleteError
+    case searchError 
+}
