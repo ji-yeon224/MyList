@@ -11,7 +11,7 @@ class SearchView: BaseView {
     
     var delegate: CollectionViewProtocol?
     var items: [ItemElement] = []
-    
+    lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
         view.dataSource = self
@@ -25,24 +25,28 @@ class SearchView: BaseView {
     let accuracySortButton = {
         let view = SortButton()
         view.setTitle(title: " 정확도 ")
+        view.tag = 0
         return view
     }()
     
     let dateSortButton = {
         let view = SortButton()
         view.setTitle(title: " 날짜순 ")
+        view.tag = 1
         return view
     }()
     
     let highSortButton = {
         let view = SortButton()
         view.setTitle(title: " 가격높은순 ")
+        view.tag = 2
         return view
     }()
     
     let lowSortButton = {
         let view = SortButton()
         view.setTitle(title: " 가격낮은순 ")
+        view.tag = 3
         return view
     }()
     
@@ -57,14 +61,26 @@ class SearchView: BaseView {
         return view
     }()
     
+    func setSortDesign(button: UIButton) {
+        for item in buttons {
+            item.backgroundColor = .black
+            item.setTitleColor(Constants.Color.tintColor, for: .normal)
+        }
+        button.backgroundColor = .white
+        button.setTitleColor(Constants.Color.background, for: .normal)
+    
+            
+    }
+    
     override func configure() {
         addSubview(searchBar)
         addSubview(buttonView)
         addSubview(collectionView)
-        buttonView.addSubview(accuracySortButton)
-        buttonView.addSubview(dateSortButton)
-        buttonView.addSubview(highSortButton)
-        buttonView.addSubview(lowSortButton)
+        
+        for item in buttons {
+            buttonView.addSubview(item)
+        }
+        
         
     }
     

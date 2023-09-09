@@ -12,8 +12,8 @@ final class SortButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
          
-        backgroundColor = Constants.Color.background
-        tintColor = Constants.Color.tintColor
+//        backgroundColor = Constants.Color.background
+//        tintColor = Constants.Color.tintColor
         titleLabel?.font = .systemFont(ofSize: 13)
         
         //invalidateIntrinsicContentSize()

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Sort: String {
-    case sim, date, asc, dsc
+enum Sort: String, CaseIterable {
+    case sim, date, dsc, asc
 }
