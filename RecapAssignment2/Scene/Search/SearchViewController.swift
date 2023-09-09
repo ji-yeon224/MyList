@@ -31,7 +31,7 @@ final class SearchViewController: BaseViewController {
     
     override func configure() {
         super.configure()
-        title = "상품 검색"
+        navigationItem.title = "상품 검색"
         sortButtonAction()
         self.hideKeyboardWhenTappedAround()
         mainView.setSortDesign(button: mainView.accuracySortButton)
@@ -88,6 +88,15 @@ extension SearchViewController {
 extension SearchViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
         print(mainView.items[indexPath.row])
+        let item = mainView.items[indexPath.row]
+        
+        let vc = DetailViewController()
+        vc.item = item
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
     }
 }
 
