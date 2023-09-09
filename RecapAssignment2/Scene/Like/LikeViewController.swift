@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LikeViewController: BaseViewController {
     
     private let mainView = LikeView()
     private let repository = LikeItemRepository()
+    var searchResult: Results<LikeItem>?
     
     override func loadView() {
         mainView.cellDelegate = self
@@ -24,14 +26,19 @@ class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.searchBar.delegate = self
         title = "좋아요 목록"
         
+       
+    }
+    
+    override func configure() {
+        self.hideKeyboardWhenTappedAround()
         mainView.items = repository.fetch()
-        
-        
     }
     
 }
+
 
 extension LikeViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
@@ -66,3 +73,31 @@ extension LikeViewController: LikeButtonProtocol {
     }
 }
 
+
+extension LikeViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let search = searchBar.text?.trimmingCharacters(in: .whitespaces) {
+            mainView.items = repository.searchItemByTitle(query: search)
+        }
+        view.endEditing(true)
+ 
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if let search = searchBar.text?.trimmingCharacters(in: .whitespaces) {
+            mainView.items = repository.searchItemByTitle(query: search)
+        }
+        mainView.collectionView.reloadData()
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        view.endEditing(true)
+        
+    }
+    
+    
+}
