@@ -47,6 +47,9 @@
 		CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */; };
 		CEC437D22AAC6C5C00EB15FC /* LikeItemRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */; };
 		CEC437D42AAC813900EB15FC /* LikeButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */; };
+		CEC437D72AACA5B100EB15FC /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D62AACA5B100EB15FC /* LikeView.swift */; };
+		CEC437D92AACA5BA00EB15FC /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D82AACA5BA00EB15FC /* LikeViewController.swift */; };
+		CEC437DB2AACA7C300EB15FC /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437DA2AACA7C300EB15FC /* TabbarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepository.swift; sourceTree = "<group>"; };
 		CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepositoryType.swift; sourceTree = "<group>"; };
 		CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonProtocol.swift; sourceTree = "<group>"; };
+		CEC437D62AACA5B100EB15FC /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		CEC437D82AACA5BA00EB15FC /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		CEC437DA2AACA7C300EB15FC /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +151,10 @@
 		CEA65CE52AA9D78C00B6CDA4 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CEC437D52AACA5A400EB15FC /* Like */,
 				CEC437C72AAC46B200EB15FC /* Detail */,
 				CEA65CF92AA9DCBF00B6CDA4 /* Search */,
+				CEC437DA2AACA7C300EB15FC /* TabbarController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -261,6 +269,15 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		CEC437D52AACA5A400EB15FC /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				CEC437D62AACA5B100EB15FC /* LikeView.swift */,
+				CEC437D82AACA5BA00EB15FC /* LikeViewController.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,10 +369,12 @@
 				CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */,
 				CEA65CFE2AA9DD7800B6CDA4 /* BaseViewController.swift in Sources */,
 				CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */,
+				CEC437D92AACA5BA00EB15FC /* LikeViewController.swift in Sources */,
 				CEC437C92AAC46C800EB15FC /* DetailViewController.swift in Sources */,
 				CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */,
 				CEA65D222AAA34AF00B6CDA4 /* SortButton.swift in Sources */,
 				CEA65D002AA9DD8200B6CDA4 /* BaseView.swift in Sources */,
+				CEC437D72AACA5B100EB15FC /* LikeView.swift in Sources */,
 				CEC437D22AAC6C5C00EB15FC /* LikeItemRepositoryType.swift in Sources */,
 				CEA65D202AAA302700B6CDA4 /* UIViewController+Extension.swift in Sources */,
 				CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */,
@@ -366,6 +385,7 @@
 				CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */,
 				CEA65D392AAAF4F500B6CDA4 /* Alert.swift in Sources */,
 				CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */,
+				CEC437DB2AACA7C300EB15FC /* TabbarController.swift in Sources */,
 				CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */,
 				CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */,
 				CEA65D022AA9DD9300B6CDA4 /* BaseCollectionViewCell.swift in Sources */,

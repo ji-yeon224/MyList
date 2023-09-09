@@ -38,6 +38,18 @@ class LikeItemRepository: LikeItemRepositoryType {
         }
     }
     
+    func getItemByProductId(id: String) -> LikeItem? {
+        let result = realm.objects(LikeItem.self).where {
+            $0.productId.equals(id)
+        }.first
+        
+        guard let result = result else {
+            return nil
+        }
+        
+        return result
+    }
+    
     func searchItemByTitle(query: String) -> Results<LikeItem> {
         let result = realm.objects(LikeItem.self).where {
             $0.title.like("*\(query)*")

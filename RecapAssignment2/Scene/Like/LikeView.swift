@@ -1,130 +1,51 @@
 //
-//  SearchView.swift
+//  LikeView.swift
 //  RecapAssignment2
 //
-//  Created by 김지연 on 2023/09/07.
+//  Created by 김지연 on 2023/09/09.
 //
 
 import UIKit
+import RealmSwift
 
-class SearchView: BaseView {
+class LikeView: BaseView {
     
     var cellDelegate: CollectionViewProtocol?
     var btnDelegate: LikeButtonProtocol?
     
-    var items: [ItemElement] = []
+    var items: Results<LikeItem>?
     
-    lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
-        view.dataSource = self
-        view.delegate = self
         view.backgroundColor = Constants.Color.background
         view.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
         
+        view.delegate = self
+        view.dataSource = self
         return view
     }()
-    
-    let accuracySortButton = {
-        let view = SortButton()
-        view.setTitle(title: " 정확도 ")
-        view.tag = 0
-        return view
-    }()
-    
-    let dateSortButton = {
-        let view = SortButton()
-        view.setTitle(title: " 날짜순 ")
-        view.tag = 1
-        return view
-    }()
-    
-    let highSortButton = {
-        let view = SortButton()
-        view.setTitle(title: " 가격높은순 ")
-        view.tag = 2
-        return view
-    }()
-    
-    let lowSortButton = {
-        let view = SortButton()
-        view.setTitle(title: " 가격낮은순 ")
-        view.tag = 3
-        return view
-    }()
-    
     
     let searchBar = {
         let view = SearchBar()
         return view
     }()
     
-    let buttonView = {
-        let view = UIView()
-        return view
-    }()
-    
-    func setSortDesign(button: UIButton) {
-        for item in buttons {
-            item.backgroundColor = .black
-            item.setTitleColor(Constants.Color.tintColor, for: .normal)
-        }
-        button.backgroundColor = .white
-        button.setTitleColor(Constants.Color.background, for: .normal)
-    
-            
-    }
-    
     override func configure() {
         addSubview(searchBar)
-        addSubview(buttonView)
         addSubview(collectionView)
-        
-        for item in buttons {
-            buttonView.addSubview(item)
-        }
-        
-        
     }
     
     override func setConstraints() {
-        
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
         }
         
-        buttonView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(10)
-            make.leading.equalTo(10)
-            make.trailing.greaterThanOrEqualTo(-10)
-            make.height.equalTo(30)
-        }
-        
-        accuracySortButton.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(buttonView)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(20)
-        }
-        dateSortButton.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(buttonView)
-            make.leading.equalTo(accuracySortButton.snp.trailing).offset(8)
-        }
-        highSortButton.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(buttonView)
-            make.leading.equalTo(dateSortButton.snp.trailing).offset(8)
-        }
-        lowSortButton.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(buttonView)
-            make.leading.equalTo(highSortButton.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualTo(safeAreaLayoutGuide).offset(-10)
-        }
-        
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(buttonView.snp.bottom).offset(10)
+            make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
             
         }
-        
     }
     
     private func collectionViewlayout() -> UICollectionViewFlowLayout {
@@ -139,28 +60,30 @@ class SearchView: BaseView {
         
         return layout
     }
+    
 }
 
-extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LikeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let items = items else { return 0 }
         return items.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        
+        guard let items = items else { return UICollectionViewCell() }
         let data = items[indexPath.row]
         
         
         cell.titleLabel.text = data.title.htmlToString()
         cell.mallLabel.text = data.mallName
         
-        if let price = Int(data.lprice) {
+        if let price = Int(data.price) {
             cell.priceLabel.text = price.numberFormatter()
         } else {
-            cell.priceLabel.text = data.lprice
+            cell.priceLabel.text = data.price
         }
         
         
@@ -179,6 +102,8 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
+        
+        
         return cell
     }
     
@@ -188,9 +113,6 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
                 btnDelegate?.buttonClickedAction(indexPath: indexPath)
             }
         }
-        
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -198,6 +120,3 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
 }
-
-
-

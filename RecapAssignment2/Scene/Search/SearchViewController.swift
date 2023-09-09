@@ -11,17 +11,17 @@ import Alamofire
 
 final class SearchViewController: BaseViewController {
     
-    let mainView = SearchView()
+    private let mainView = SearchView()
     var sortType: Sort = .sim
     var searchKeyword = ""
     let sortAllCase = Sort.allCases
     var keyword = ""
     var startIdx = 1
     
-    let repository = LikeItemRepository()
+    private let repository = LikeItemRepository()
     
     override func loadView() {
-        mainView.delegate = self
+        mainView.cellDelegate = self
         mainView.btnDelegate = self
         self.view = mainView
     }
@@ -31,13 +31,12 @@ final class SearchViewController: BaseViewController {
         
         mainView.searchBar.delegate = self
         mainView.collectionView.prefetchDataSource = self
-        
-        
+        print(repository.getRealmFilePath())
     }
     
     override func configure() {
         super.configure()
-        navigationItem.title = "상품 검색"
+        
         sortButtonAction()
         self.hideKeyboardWhenTappedAround()
         mainView.setSortDesign(button: mainView.accuracySortButton)
@@ -152,15 +151,30 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: LikeButtonProtocol {
     func buttonClickedAction(indexPath: IndexPath) {
         let item = mainView.items[indexPath.row]
-        let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
         
-        do {
-            try repository.createItem(like)
-        } catch {
-            showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
-                
+        if let task = repository.getItemByProductId(id: item.productID) { //이미 좋아요 누른 목록
+            do {
+                try repository.deleteItem(task)
+            } catch {
+                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+                    return
+                }
+            }
+            
+        } else {
+            let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
+            
+            do {
+                try repository.createItem(like)
+            } catch {
+                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+                    return
+                }
             }
         }
+        
+        
+        
         
         
     }
