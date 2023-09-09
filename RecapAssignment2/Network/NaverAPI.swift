@@ -16,7 +16,7 @@ final class NaverAPI {
     
     private let header: HTTPHeaders = ["X-Naver-Client-Id": "\(APIKey.naverId)", "X-Naver-Client-Secret": "\(APIKey.naverSecret)"]
     
-    func callShoppingRequest(endPoint: EndPoint, query: String, successHandler: @escaping (Search) -> Void, faliureHandler: @escaping (AFError) -> Void) throws {
+    func callShoppingRequest(endPoint: EndPoint, query: String, sort: Sort, successHandler: @escaping (Search) -> Void, faliureHandler: @escaping (AFError) -> Void) throws {
         
         
         let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -25,7 +25,7 @@ final class NaverAPI {
         guard let text = text else {
             throw ValidationError.invalidValue
         }
-        let url = EndPoint.shop.requestURL + "\(text)"
+        let url = EndPoint.shop.requestURL + makeParameterString(query: text, sort: sort)
 
         AF.request(url, method: .get, headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: Search.self) { response in
@@ -37,6 +37,10 @@ final class NaverAPI {
                 
             }
         
+    }
+    
+    private func makeParameterString(query: String, sort: Sort) -> String {
+        return "query=\(query)&display=30&sort=\(sort.rawValue)"
     }
     
 }

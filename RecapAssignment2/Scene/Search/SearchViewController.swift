@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     let group = DispatchGroup()
@@ -20,7 +20,7 @@ class SearchViewController: BaseViewController {
         self.view = mainView
         self.hideKeyboardWhenTappedAround()
         
-        callRequest()
+        callRequest(query: "캠핑카", sort: .sim)
         
         group.notify(queue: .main) {
             self.mainView.collectionView.reloadData()
@@ -37,24 +37,22 @@ class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController {
-    func callRequest() {
+    func callRequest(query: String, sort: Sort) {
         group.enter()
         do {
-            try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: "캠핑카") { data in
+            try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort) { data in
                 //print(data)
                 self.mainView.items = data.items
                 //print(data.items)
                 self.group.leave()
             } faliureHandler: { error in
                 print(error)
-                self.showAlertMessage(title: "error") {
-                    
-                }
+                self.showAlertMessage(title: "다시 시도해주세요.") { }
                 
             }
             
         } catch {
-            print()
+            showAlertMessage(title: "올바른 검색어를 입력해주세요.") { }
         }
         
         
@@ -63,6 +61,6 @@ extension SearchViewController {
 
 extension SearchViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
-        print(indexPath)
+        print(mainView.items[indexPath.row])
     }
 }

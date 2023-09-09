@@ -10,10 +10,18 @@ import Foundation
 enum EndPoint {
     case shop
     
+    
+    
+}
+
+extension EndPoint {
     var requestURL: String {
         switch self {
-        case .shop: return URL.makeEndPointString("/shop?query=")
+        case .shop: return URL.makeEndPointString("/shop?")
         }
     }
+    
+    
+    
     
 }

@@ -11,7 +11,10 @@ class CollectionViewCell: BaseCollctionViewCell {
     
     let imageView = {
         let view = ItemImageView(frame: .zero)
-        view.backgroundColor = .darkGray
+        view.contentMode = .scaleToFill
+        view.tintColor = .lightGray
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constants.Design.cornerRadius
         return view
     }()
     
@@ -35,6 +38,7 @@ class CollectionViewCell: BaseCollctionViewCell {
         view.textColor = Constants.Color.text
         view.font = .systemFont(ofSize: 14)
         view.numberOfLines = 2
+        view.textAlignment = .left
         view.text = "title"
         return view
     }()
@@ -42,9 +46,8 @@ class CollectionViewCell: BaseCollctionViewCell {
     let priceLabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
-        view.font = .boldSystemFont(ofSize: 20)
+        view.font = .boldSystemFont(ofSize: 18)
         view.numberOfLines = 1
-        view.text = numberFormatter(num: 1234567889111111110)
         view.adjustsFontSizeToFitWidth = true
         view.minimumScaleFactor = 0.5
         return view
@@ -86,7 +89,7 @@ class CollectionViewCell: BaseCollctionViewCell {
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalTo(contentView)
-            make.bottom.greaterThanOrEqualTo(5)
+            make.bottom.lessThanOrEqualTo(5)
         }
         
     }

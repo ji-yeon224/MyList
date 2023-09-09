@@ -7,12 +7,12 @@
 
 import UIKit
 
-extension UICollectionViewCell {
+extension Int {
     
-    static func numberFormatter(num: Int) -> String {
+    func numberFormatter() -> String {
         let numFomatter = NumberFormatter()
         numFomatter.numberStyle = .decimal
-        return numFomatter.string(from: NSNumber(value: num)) ?? "0"
+        return numFomatter.string(from: NSNumber(value: self)) ?? "0"
     }
     
 }

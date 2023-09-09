@@ -9,4 +9,6 @@ import Foundation
 
 enum ValidationError: Error {
     case invalidValue
+    case isNotInt
+    
 }

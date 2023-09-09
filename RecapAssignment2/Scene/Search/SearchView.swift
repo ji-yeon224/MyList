@@ -125,7 +125,6 @@ class SearchView: BaseView {
 extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(items, items.count)
         return items.count
         
     }
@@ -134,9 +133,32 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         
-        //cell.titleLabel.text = items[indexPath.row].title
-        print(items[indexPath.row].title)
-        cell.titleLabel.text = items[indexPath.row].title.htmlToString()
+        let data = items[indexPath.row]
+        
+        cell.titleLabel.text = data.title.htmlToString()
+        cell.mallLabel.text = data.mallName
+        
+        if let price = Int(data.lprice) {
+            cell.priceLabel.text = price.numberFormatter()
+        } else {
+            cell.priceLabel.text = data.lprice
+        }
+        
+        
+
+        if let url = URL(string: data.image) {
+            DispatchQueue.global().async {
+                let imgURL = try! Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    cell.imageView.image = UIImage(data: imgURL)
+                }
+            }
+           
+            
+        } else {
+            cell.imageView.image = UIImage(systemName: "cart")
+        }
+        
         
         
         return cell
