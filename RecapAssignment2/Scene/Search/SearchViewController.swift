@@ -95,8 +95,9 @@ extension SearchViewController: CollectionViewProtocol {
         let item = mainView.items[indexPath.row]
         
         let vc = DetailViewController()
-        vc.item = item
+        let task = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
         
+        vc.task = task
         navigationController?.pushViewController(vc, animated: true)
 
         

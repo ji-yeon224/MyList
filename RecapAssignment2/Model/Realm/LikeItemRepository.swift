@@ -13,7 +13,7 @@ class LikeItemRepository: LikeItemRepositoryType {
     private let realm = try! Realm()
     
     func fetch() -> Results<LikeItem> {
-        let data = realm.objects(LikeItem.self)
+        let data = realm.objects(LikeItem.self).sorted(byKeyPath: "date", ascending: false)
         return data
     }
     

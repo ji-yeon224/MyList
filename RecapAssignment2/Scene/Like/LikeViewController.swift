@@ -18,6 +18,10 @@ class LikeViewController: BaseViewController {
         self.view = mainView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        mainView.collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "좋아요 목록"
@@ -35,7 +39,9 @@ extension LikeViewController: CollectionViewProtocol {
         let data = items[indexPath.row]
         
         let vc = DetailViewController()
-        //vc.item = data
+        vc.task = data
+        
+        
         
         navigationController?.pushViewController(vc, animated: true)
 
@@ -57,10 +63,6 @@ extension LikeViewController: LikeButtonProtocol {
                 return
             }
         }
-        
-        
-        
-        
     }
 }
 

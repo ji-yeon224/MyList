@@ -7,13 +7,17 @@
 
 import UIKit
 import WebKit
+import RealmSwift
 
 class DetailViewController: BaseViewController, WKUIDelegate {
     
-    var item: ItemElement?
+    var task: LikeItem?
+    
 
     var webView: WKWebView!
     var like: Bool = false
+    
+    private let repository = LikeItemRepository()
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -22,15 +26,16 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         view = webView
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let item = item else {
+        guard let task = task else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             return
         }
-        title = item.title.htmlToString()
+        title = task.title
         
     }
     
@@ -43,14 +48,14 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         //바 틴트 바꾸는 것
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         
-        guard let item = item else {
+        guard let task = task else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             
             return
         }
-        let urlString = URL.makeDetailURL(productId: item.productID)
+        let urlString = URL.makeDetailURL(productId: task.productId)
         guard let url = URL(string: urlString) else {
             showAlertMessage(title: "URL 주소가 잘못되었습니다.") {
                 self.navigationController?.popViewController(animated: true)
@@ -71,6 +76,8 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     
     @objc private func likeButtonClicked() {
         like.toggle()
+        
+        
         
         navigationItem.rightBarButtonItem?.image = setLikeButtonImage()
     }
