@@ -46,6 +46,7 @@
 		CEC437CE2AAC665100EB15FC /* LikeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437CD2AAC665100EB15FC /* LikeItem.swift */; };
 		CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */; };
 		CEC437D22AAC6C5C00EB15FC /* LikeItemRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */; };
+		CEC437D42AAC813900EB15FC /* LikeButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		CEC437CD2AAC665100EB15FC /* LikeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItem.swift; sourceTree = "<group>"; };
 		CEC437CF2AAC67AD00EB15FC /* LikeItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepository.swift; sourceTree = "<group>"; };
 		CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeItemRepositoryType.swift; sourceTree = "<group>"; };
+		CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,8 @@
 				CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */,
 				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
 				CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */,
+				CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */,
+				CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -224,7 +228,6 @@
 		CEA65D302AAAE5D200B6CDA4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */,
 				CEA65D1F2AAA302700B6CDA4 /* UIViewController+Extension.swift */,
 				CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */,
 				CEA65D312AAAE5E700B6CDA4 /* URL+Extension.swift */,
@@ -372,6 +375,7 @@
 				CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */,
 				CEA65D372AAAF2F400B6CDA4 /* Error.swift in Sources */,
 				CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */,
+				CEC437D42AAC813900EB15FC /* LikeButtonProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

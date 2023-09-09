@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CollectionViewProtocol {
+protocol CollectionViewProtocol: AnyObject {
     func didSelectRowItemAt(indexPath: IndexPath)
 }

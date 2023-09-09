@@ -15,6 +15,7 @@ class CollectionViewCell: BaseCollctionViewCell {
         view.tintColor = .lightGray
         view.clipsToBounds = true
         view.layer.cornerRadius = Constants.Design.cornerRadius
+        view.isUserInteractionEnabled = true 
         return view
     }()
     
@@ -54,7 +55,6 @@ class CollectionViewCell: BaseCollctionViewCell {
     }()
     
     
-    
     override func configure() {
         contentView.addSubview(imageView)
         imageView.addSubview(likeButton)
@@ -64,6 +64,8 @@ class CollectionViewCell: BaseCollctionViewCell {
         
         
     }
+    
+    
     
     override func setConstraints() {
         imageView.snp.makeConstraints { make in

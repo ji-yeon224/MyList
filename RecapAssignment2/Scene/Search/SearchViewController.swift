@@ -20,13 +20,17 @@ final class SearchViewController: BaseViewController {
     
     let repository = LikeItemRepository()
     
+    override func loadView() {
+        mainView.delegate = self
+        mainView.btnDelegate = self
+        self.view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.delegate = self
+        
         mainView.searchBar.delegate = self
         mainView.collectionView.prefetchDataSource = self
-        self.view = mainView
-        
         
         
     }
@@ -89,7 +93,6 @@ extension SearchViewController {
 
 extension SearchViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
-        print(mainView.items[indexPath.row])
         let item = mainView.items[indexPath.row]
         
         let vc = DetailViewController()
@@ -144,4 +147,10 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     
+}
+
+extension SearchViewController: LikeButtonProtocol {
+    func buttonClickedAction(indexPath: IndexPath) {
+        
+    }
 }

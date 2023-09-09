@@ -10,6 +10,8 @@ import UIKit
 class SearchView: BaseView {
     
     var delegate: CollectionViewProtocol?
+    var btnDelegate: LikeButtonProtocol?
+    
     var items: [ItemElement] = []
     lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
     lazy var collectionView = {
@@ -148,7 +150,6 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        print(indexPath.row)
         let data = items[indexPath.row]
         
         
@@ -176,9 +177,20 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.imageView.image = UIImage(systemName: "cart")
         }
         
-        
-        
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
         return cell
+    }
+    
+    @objc private func likeButtonClicked(_ sender: UIButton) {
+        print(sender.tag)
+        if let cell  = sender.superview?.superview?.superview as? CollectionViewCell{
+            if let indexPath = self.collectionView.indexPath(for: cell) {
+                btnDelegate?.buttonClickedAction(indexPath: indexPath)
+            }
+        }
+        
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -69,7 +69,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         
     }
     
-    @objc func likeButtonClicked() {
+    @objc private func likeButtonClicked() {
         like.toggle()
         
         navigationItem.rightBarButtonItem?.image = setLikeButtonImage()
