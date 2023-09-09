@@ -13,18 +13,17 @@ final class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     let group = DispatchGroup()
+    var sortType: Sort = .sim
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.delegate = self
+        mainView.searchBar.delegate = self
         self.view = mainView
         self.hideKeyboardWhenTappedAround()
         
-        callRequest(query: "캠핑카", sort: .sim)
         
-        group.notify(queue: .main) {
-            self.mainView.collectionView.reloadData()
-        }
+        
         
     }
     
@@ -43,7 +42,6 @@ extension SearchViewController {
             try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort) { data in
                 //print(data)
                 self.mainView.items = data.items
-                //print(data.items)
                 self.group.leave()
             } faliureHandler: { error in
                 print(error)
@@ -62,5 +60,27 @@ extension SearchViewController {
 extension SearchViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
         print(mainView.items[indexPath.row])
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let search = searchBar.text?.trimmingCharacters(in: .whitespaces) else {
+            return
+        }
+        callRequest(query: search, sort: sortType)
+        view.endEditing(true)
+        group.notify(queue: .main) {
+            self.mainView.collectionView.reloadData()
+            self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" {
+            mainView.items.removeAll()
+            mainView.collectionView.reloadData()
+        }
     }
 }
