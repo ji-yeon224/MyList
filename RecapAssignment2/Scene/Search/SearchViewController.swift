@@ -151,6 +151,17 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: LikeButtonProtocol {
     func buttonClickedAction(indexPath: IndexPath) {
+        let item = mainView.items[indexPath.row]
+        let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
+        
+        do {
+            try repository.createItem(like)
+        } catch {
+            showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+                
+            }
+        }
+        
         
     }
 }

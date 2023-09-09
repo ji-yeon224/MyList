@@ -10,7 +10,7 @@ import RealmSwift
 
 class LikeItemRepository: LikeItemRepositoryType {
     
-    let realm = try! Realm()
+    private let realm = try! Realm()
     
     func fetch() -> Results<LikeItem> {
         let data = realm.objects(LikeItem.self)
