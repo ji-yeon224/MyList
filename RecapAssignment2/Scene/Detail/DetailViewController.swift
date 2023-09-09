@@ -37,7 +37,6 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         }
         title = task.title
         like = task.like
-        print(like)
         
         setNavigationItem()
     }
@@ -88,7 +87,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         
         like.toggle()
         
-        print(task)
+        //print(task)
         changeNavBarButton()
         
 //        if let task = repository.getItemByProductId(id: task.productId) { //이미 좋아요 누른 목록
