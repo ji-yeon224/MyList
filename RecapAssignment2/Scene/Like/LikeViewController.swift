@@ -31,8 +31,7 @@ class LikeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.searchBar.delegate = self
-        title = "좋아요 목록"
-        
+        navigationItem.title = "좋아요 목록"
        
     }
     

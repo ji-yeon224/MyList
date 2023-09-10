@@ -14,6 +14,8 @@ class TabbarController: UITabBarController {
         let vc1 = SearchViewController()
         let vc2 = LikeViewController()
         
+        self.tabBar.barTintColor = .black
+        
         self.tabBar.tintColor = Constants.Color.tintColor
         self.tabBar.unselectedItemTintColor = .darkGray
         
@@ -23,10 +25,7 @@ class TabbarController: UITabBarController {
         vc2.tabBarItem.image = UIImage(systemName: "heart")
         
         let nav1 = UINavigationController(rootViewController: vc1)
-        nav1.navigationItem.title = "상품 검색"
-        nav1.navigationBar.tintColor = .white
         let nav2 = UINavigationController(rootViewController: vc2)
-        nav2.navigationItem.title = "좋아요 목록"
         
         setViewControllers([nav1, nav2], animated: true)
         

@@ -14,46 +14,29 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     
     var item: ItemElement?
     var itemImage: UIImage?
-    var webView: WKWebView!
     var like: Bool = false
     
     private let repository = LikeItemRepository()
     private let imageFileManager = ImageFileManager()
     
+    let mainView = DetailView()
+    
     override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
+        
+        self.view = mainView
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let item = item else {
-            showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
-                self.navigationController?.popViewController(animated: true)
-            }
-            return
-        }
-        title = item.title
-        setNavigationItem()
-        like = item.like
-        changeNavBarButton(like: like)
+        
+        loadWebView()
+        
         
     }
     
-    
-    override func configure() {
-        super.configure()
-        
-        
-        
-        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        //바 틴트 바꾸는 것
-        self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
-        
-        
+    func loadWebView() {
         guard let item = item else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
@@ -69,11 +52,39 @@ class DetailViewController: BaseViewController, WKUIDelegate {
             return
         }
         let request = URLRequest(url: url)
-        webView.load(request)
+        mainView.webView.load(request)
+        
+    }
+    
+    
+    override func configure() {
+        super.configure()
+        
+        guard let item = item else {
+            showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
+                self.navigationController?.popViewController(animated: true)
+            }
+            return
+        }
+        
+        title = item.title.htmlToString()
+        like = item.like
+        
+        setNavigationBar()
+        setNavigationItem()
+        changeNavBarButton(like: like)
+    }
+    
+    func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = Constants.Color.background
+        navigationController?.navigationBar.tintColor = Constants.Color.tintColor
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     func setNavigationItem() {
-        navigationItem.backBarButtonItem?.title = "상품 검색"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = Constants.Color.tintColor
@@ -105,7 +116,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
             } catch {
                 return
             }
-
+            
         } else { // 좋아요 등록
             let task = LikeItem(productId: item.productID, title: item.title, image: item.image, price: item.lprice, mallName: item.mallName, like: true)
             do {
@@ -119,12 +130,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         }
         
         
-        
-        
     }
-   
-    
-    
     func changeNavBarButton(like: Bool) {
         
         if like {

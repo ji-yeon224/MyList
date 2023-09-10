@@ -51,6 +51,7 @@
 		CEC437D92AACA5BA00EB15FC /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437D82AACA5BA00EB15FC /* LikeViewController.swift */; };
 		CEC437DB2AACA7C300EB15FC /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437DA2AACA7C300EB15FC /* TabbarController.swift */; };
 		CEC437DD2AAD538500EB15FC /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437DC2AAD538500EB15FC /* FileManager+Extension.swift */; };
+		CEC437E22AADE85E00EB15FC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC437E12AADE85E00EB15FC /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		CEC437D82AACA5BA00EB15FC /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 		CEC437DA2AACA7C300EB15FC /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		CEC437DC2AAD538500EB15FC /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		CEC437E12AADE85E00EB15FC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC437C82AAC46C800EB15FC /* DetailViewController.swift */,
+				CEC437E12AADE85E00EB15FC /* DetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */,
 				CEA65D2F2AAAE57300B6CDA4 /* EndPoint.swift in Sources */,
 				CEA65D042AA9E88400B6CDA4 /* ReusableProtocol.swift in Sources */,
+				CEC437E22AADE85E00EB15FC /* DetailView.swift in Sources */,
 				CEA65D062AA9ED1500B6CDA4 /* SearchViewController.swift in Sources */,
 				CEA65CFE2AA9DD7800B6CDA4 /* BaseViewController.swift in Sources */,
 				CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */,

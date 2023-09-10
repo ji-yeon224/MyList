@@ -32,7 +32,8 @@ final class SearchViewController: BaseViewController {
         
         mainView.searchBar.delegate = self
         mainView.collectionView.prefetchDataSource = self
-        print(repository.getRealmFilePath())
+        navigationItem.title = "상품 목록"
+        //print(repository.getRealmFilePath())
     }
     
     override func viewWillAppear(_ animated: Bool) {
