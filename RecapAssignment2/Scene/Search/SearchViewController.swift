@@ -83,13 +83,12 @@ extension SearchViewController {
                     self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
             } faliureHandler: { error in
-                print(error)
-                self.showAlertMessage(title: "다시 시도해주세요.") { }
+                self.showAlertMessage(title: "NetWorkError", message: "인터넷 연결 확인 후 다시 시도해주세요.") { }
                 return
             }
             
         } catch {
-            showAlertMessage(title: "올바른 검색어를 입력해주세요.") { }
+            showAlertMessage(title: "", message: "올바른 검색어를 입력해주세요.") { }
             return
         }
         
@@ -165,7 +164,7 @@ extension SearchViewController: LikeButtonProtocol {
                 try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
                 try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
-                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
                     return
                 }
             } catch ImageError.removeImageError {
@@ -185,7 +184,7 @@ extension SearchViewController: LikeButtonProtocol {
                 
                 
             } catch DataBaseError.createError {
-                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {
                     return
                 }
             } catch ImageError.saveImageError {

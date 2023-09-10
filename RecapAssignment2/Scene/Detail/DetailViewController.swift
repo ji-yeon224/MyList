@@ -38,7 +38,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     
     func loadWebView() {
         guard let item = item else {
-            showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
+            showAlertMessage(title: "", message: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -46,7 +46,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         }
         let urlString = URL.makeDetailURL(productId: item.productID)
         guard let url = URL(string: urlString) else {
-            showAlertMessage(title: "URL 주소가 잘못되었습니다.") {
+            showAlertMessage(title: "", message: "URL 주소가 잘못되었습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             return
@@ -61,7 +61,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         super.configure()
         
         guard let item = item else {
-            showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
+            showAlertMessage(title: "", message: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             return
@@ -107,7 +107,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
                 try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
                 try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
-                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
                     return
                 }
             } catch ImageError.removeImageError {
@@ -123,7 +123,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
                 try repository.createItem(task)
                 try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: itemImage ?? UIImage(systemName: "cart")!)
             } catch {
-                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {
                     return
                 }
             }

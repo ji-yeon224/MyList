@@ -74,7 +74,7 @@ extension LikeViewController: LikeButtonProtocol {
             try repository.deleteItem(item)
             mainView.collectionView.reloadData()
         } catch DataBaseError.deleteError {
-            showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+            showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
                 return
             }
         } catch ImageError.removeImageError {
