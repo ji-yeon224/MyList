@@ -111,7 +111,7 @@ extension LikeView: UICollectionViewDelegate, UICollectionViewDataSource {
     @objc private func likeButtonClicked(_ sender: UIButton) {
         if let cell  = sender.superview?.superview?.superview as? CollectionViewCell{
             if let indexPath = self.collectionView.indexPath(for: cell) {
-                btnDelegate?.buttonClickedAction(indexPath: indexPath)
+                btnDelegate?.buttonClickedAction(indexPath: indexPath, image: cell.imageView.image)
             }
         }
     }

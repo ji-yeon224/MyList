@@ -192,8 +192,7 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             cell.imageView.image = UIImage(systemName: "cart")
         }
-        print(data.like)
-        //cell.likeButton.setImage(changeLikeButtonImage(like: data.like), for: .normal)
+       
         
         // 좋아요 목록에 이미 존재한다면
         
@@ -207,12 +206,13 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    // 좋아요 버튼 클릭 액션
     @objc private func likeButtonClicked(_ sender: UIButton) {
         if let cell  = sender.superview?.superview?.superview as? CollectionViewCell{
             if let indexPath = self.collectionView.indexPath(for: cell) {
                 items[indexPath.row].like.toggle()
                 cell.likeButton.setImage(changeLikeButtonImage(like: items[indexPath.row].like), for: .normal)
-                btnDelegate?.buttonClickedAction(indexPath: indexPath)
+                btnDelegate?.buttonClickedAction(indexPath: indexPath, image: cell.imageView.image) // 액션 구현 뷰컨에 넘김
             }
         }
         

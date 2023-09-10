@@ -58,7 +58,7 @@ extension LikeViewController: CollectionViewProtocol {
 }
 
 extension LikeViewController: LikeButtonProtocol {
-    func buttonClickedAction(indexPath: IndexPath) {
+    func buttonClickedAction(indexPath: IndexPath, image: UIImage?) {
         guard let items = mainView.items else { return }
         let item = items[indexPath.row]
         

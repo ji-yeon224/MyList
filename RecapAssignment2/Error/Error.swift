@@ -17,5 +17,11 @@ enum DataBaseError: Error {
     case createError
     case updateError
     case deleteError
-    case searchError 
+    case searchError
+    
+}
+
+enum ImageError: Error {
+    case saveImageError
+    case removeImageError
 }

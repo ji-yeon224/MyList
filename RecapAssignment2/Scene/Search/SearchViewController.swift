@@ -65,7 +65,7 @@ final class SearchViewController: BaseViewController {
         }
         mainView.setSortDesign(button: sender)
         
-    
+        
     }
     
     
@@ -104,7 +104,7 @@ extension SearchViewController: CollectionViewProtocol {
         
         vc.task = task
         navigationController?.pushViewController(vc, animated: true)
-
+        
         
         
     }
@@ -121,7 +121,7 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
         }
         
     }
-   
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -133,7 +133,7 @@ extension SearchViewController: UISearchBarDelegate {
         keyword = search
         callRequest(query: search, sort: sortType, startIdx: startIdx)
         view.endEditing(true)
- 
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -155,34 +155,46 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: LikeButtonProtocol {
-    func buttonClickedAction(indexPath: IndexPath) {
+    func buttonClickedAction(indexPath: IndexPath, image: UIImage?) {
         let item = mainView.items[indexPath.row]
         
         
-        if let task = repository.getItemByProductId(id: item.productID) { //이미 좋아요 누른 목록
+        if let task = repository.getItemByProductId(id: item.productID) { // 좋아요 해제
             do {
                 try repository.deleteItem(task)
+                try removeImageFromDocument(filename: getFileName(productId: item.productID))
                 
-            } catch {
+            } catch DataBaseError.deleteError {
                 showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
                     return
                 }
+            } catch ImageError.removeImageError {
+                print("error")
+                return
+            } catch {
+                return
             }
             
-        } else {
+        } else { // 좋아요 등록
             let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
             
             do {
                 try repository.createItem(like)
-            } catch {
+                
+                try saveImageToDocument(fileName: getFileName(productId: item.productID), image: image ?? UIImage(systemName: "cart")!)
+                
+                
+            } catch DataBaseError.createError {
                 showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
                     return
                 }
+            } catch ImageError.saveImageError {
+                print("error") // 이미지 저장 실패 시 처리 어떻게?
+                return
+            } catch {
+                return
             }
         }
-        
-        
-        
         
         
     }
