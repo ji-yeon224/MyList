@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class LikeItem: Object {
+final class LikeItem: Object {
     @Persisted(primaryKey: true) var productId: String
     @Persisted var title: String
     @Persisted var image: String

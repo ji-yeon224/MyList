@@ -11,7 +11,6 @@ enum EndPoint {
     case shop
     
     
-    
 }
 
 extension EndPoint {

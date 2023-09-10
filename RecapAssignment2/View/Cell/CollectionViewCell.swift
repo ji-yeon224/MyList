@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: BaseCollctionViewCell {
+final class CollectionViewCell: BaseCollctionViewCell {
     
     let imageView = {
         let view = ItemImageView(frame: .zero)

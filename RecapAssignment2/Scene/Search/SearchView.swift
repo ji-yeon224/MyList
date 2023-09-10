@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SearchView: BaseView {
+final class SearchView: BaseView {
     
     var cellDelegate: CollectionViewProtocol?
     var btnDelegate: LikeButtonProtocol?
@@ -16,7 +16,7 @@ class SearchView: BaseView {
     var items: [ItemElement] = []
     private let repository = LikeItemRepository()
     
-    lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
+    private lazy var buttons: [UIButton] = [accuracySortButton, dateSortButton, highSortButton, lowSortButton]
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
         view.dataSource = self
@@ -61,7 +61,7 @@ class SearchView: BaseView {
         return view
     }()
     
-    let buttonView = {
+    private let buttonView = {
         let view = UIView()
         return view
     }()
@@ -143,13 +143,13 @@ class SearchView: BaseView {
     }
     
     // 좋아요 목록에 존재하는지
-    func isExistRecord(productId: String) -> LikeItem? {
+    private func isExistRecord(productId: String) -> LikeItem? {
         let result = repository.getItemByProductId(id: productId)
         return result
     }
     
     // 하트 이미지 변경
-    func changeLikeButtonImage(like: Bool) -> UIImage {
+    private func changeLikeButtonImage(like: Bool) -> UIImage {
         let image = like ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
         return image
     }

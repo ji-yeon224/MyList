@@ -12,11 +12,11 @@ import Alamofire
 final class SearchViewController: BaseViewController {
     
     private let mainView = SearchView()
-    var sortType: Sort = .sim
-    var searchKeyword = ""
-    let sortAllCase = Sort.allCases
-    var keyword = ""
-    var startIdx = 1
+    private var sortType: Sort = .sim
+    private var searchKeyword = ""
+    private let sortAllCase = Sort.allCases
+    private var keyword = ""
+    private var startIdx = 1
     
     private let repository = LikeItemRepository()
     private let imageFileManager = ImageFileManager()

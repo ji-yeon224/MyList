@@ -8,13 +8,13 @@
 import UIKit
 import RealmSwift
 
-class LikeViewController: BaseViewController {
+final class LikeViewController: BaseViewController {
     
     private let mainView = LikeView()
     private let repository = LikeItemRepository()
     private let imageFileManager = ImageFileManager()
-    var searchResult: Results<LikeItem>?
-    var num = 1
+    private var searchResult: Results<LikeItem>?
+    private var num = 1
     
     override func loadView() {
         mainView.cellDelegate = self

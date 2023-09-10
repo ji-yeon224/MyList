@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class DetailView: BaseView, WKUIDelegate {
+final class DetailView: BaseView, WKUIDelegate {
     
     var webView = WKWebView()
     

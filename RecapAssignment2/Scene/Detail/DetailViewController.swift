@@ -9,17 +9,17 @@ import UIKit
 import WebKit
 import RealmSwift
 
-class DetailViewController: BaseViewController, WKUIDelegate {
+final class DetailViewController: BaseViewController, WKUIDelegate {
     
     
     var item: ItemElement?
     var itemImage: UIImage?
-    var like: Bool = false
     
+    private var like: Bool = false
     private let repository = LikeItemRepository()
     private let imageFileManager = ImageFileManager()
     
-    let mainView = DetailView()
+    private let mainView = DetailView()
     
     override func loadView() {
         
@@ -32,7 +32,6 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         super.viewDidLoad()
         
         loadWebView()
-        
         
     }
     
@@ -75,7 +74,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         changeNavBarButton(like: like)
     }
     
-    func setNavigationBar() {
+    private func setNavigationBar() {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.isTranslucent = false
@@ -84,7 +83,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         navigationController?.navigationBar.standardAppearance = appearance
     }
     
-    func setNavigationItem() {
+    private func setNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = Constants.Color.tintColor
@@ -131,7 +130,7 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         
         
     }
-    func changeNavBarButton(like: Bool) {
+    private func changeNavBarButton(like: Bool) {
         
         if like {
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")

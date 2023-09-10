@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class LikeView: BaseView {
+final class LikeView: BaseView {
     
     var cellDelegate: CollectionViewProtocol?
     var btnDelegate: LikeButtonProtocol?

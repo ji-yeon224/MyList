@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class LikeItemRepository: LikeItemRepositoryType {
+final class LikeItemRepository: LikeItemRepositoryType {
     
     private let realm = try! Realm()
     
