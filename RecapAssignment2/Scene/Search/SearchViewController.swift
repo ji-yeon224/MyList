@@ -77,19 +77,22 @@ extension SearchViewController {
     func callRequest(query: String, sort: Sort, startIdx: Int) {
         do {
             try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort, startIdx: startIdx) { data in
+                
+                
+                if data.items.count == 0 {
+                    self.showAlertMessage(title: "", message: "검색 결과가 없습니다.") { }
+                }
                 self.mainView.items.append(contentsOf: data.items)
                 self.mainView.collectionView.reloadData()
-                if startIdx == 1 {
+                if startIdx == 1 && self.mainView.items.count != 0{
                     self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
             } faliureHandler: { error in
                 self.showAlertMessage(title: "NetWorkError", message: "인터넷 연결 확인 후 다시 시도해주세요.") { }
-                return
             }
             
         } catch {
             showAlertMessage(title: "", message: "올바른 검색어를 입력해주세요.") { }
-            return
         }
         
         
@@ -165,14 +168,10 @@ extension SearchViewController: LikeButtonProtocol {
                 try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
                 showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
-                    return
                 }
             } catch ImageError.removeImageError {
                 print("error")
-                return
-            } catch {
-                return
-            }
+            } catch { }
             
         } else { // 좋아요 등록
             let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName, like: true)
@@ -185,14 +184,10 @@ extension SearchViewController: LikeButtonProtocol {
                 
             } catch DataBaseError.createError {
                 showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {
-                    return
                 }
             } catch ImageError.saveImageError {
                 print("error") // 이미지 저장 실패 시 처리 어떻게?
-                return
-            } catch {
-                return
-            }
+            } catch { }
         }
         
         
