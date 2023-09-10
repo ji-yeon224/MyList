@@ -11,13 +11,14 @@ import RealmSwift
 
 class DetailViewController: BaseViewController, WKUIDelegate {
     
-    var task: LikeItem?
     
-
+    var item: ItemElement?
+    var itemImage: UIImage?
     var webView: WKWebView!
     var like: Bool = false
     
     private let repository = LikeItemRepository()
+    private let imageFileManager = ImageFileManager()
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -29,16 +30,17 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let task = task else {
+        guard let item = item else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             return
         }
-        title = task.title
-        like = task.like
-        
+        title = item.title
         setNavigationItem()
+        like = item.like
+        changeNavBarButton(like: like)
+        
     }
     
     
@@ -52,14 +54,14 @@ class DetailViewController: BaseViewController, WKUIDelegate {
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         
         
-        guard let task = task else {
+        guard let item = item else {
             showAlertMessage(title: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
             
             return
         }
-        let urlString = URL.makeDetailURL(productId: task.productId)
+        let urlString = URL.makeDetailURL(productId: item.productID)
         guard let url = URL(string: urlString) else {
             showAlertMessage(title: "URL 주소가 잘못되었습니다.") {
                 self.navigationController?.popViewController(animated: true)
@@ -73,63 +75,62 @@ class DetailViewController: BaseViewController, WKUIDelegate {
     func setNavigationItem() {
         navigationItem.backBarButtonItem?.title = "상품 검색"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(likeButtonClicked))
-        changeNavBarButton()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = Constants.Color.tintColor
         navigationItem.titleView?.tintColor = Constants.Color.tintColor
         
     }
     
     @objc private func likeButtonClicked() {
-        guard let task = task else {
+        guard let item = item else {
             self.navigationController?.popViewController(animated: true)
             return
         }
         
         like.toggle()
+        print(like)
+        changeNavBarButton(like: like)
         
-        //print(task)
-        changeNavBarButton()
-        
-//        if let task = repository.getItemByProductId(id: task.productId) { //이미 좋아요 누른 목록
-//            do {
-//                try repository.deleteItem(task)
-//            } catch {
-//                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
-//                    return
-//                }
-//            }
-//
-//        } else {
-//
-//            do {
-//                try repository.createItem(task)
-//            } catch {
-//                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
-//                    return
-//                }
-//            }
-//        }
-        
-        
-        
-        
-    }
-    
-    func setLikeButtonImage() -> UIImage{
-        //print(like)
-        if like {
-            return UIImage(systemName: "heart.fill")!
-        } else {
-            return UIImage(systemName: "heart")!
+        if let task = repository.getItemByProductId(id: item.productID) { //이미 좋아요 누른 목록
+            do {
+                try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
+                try repository.deleteItem(task)
+            } catch DataBaseError.deleteError {
+                showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
+                    return
+                }
+            } catch ImageError.removeImageError {
+                print("error")
+                return
+            } catch {
+                return
+            }
+
+        } else { // 좋아요 등록
+            let task = LikeItem(productId: item.productID, title: item.title, image: item.image, price: item.lprice, mallName: item.mallName, like: true)
+            do {
+                try repository.createItem(task)
+                try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: itemImage ?? UIImage(systemName: "cart")!)
+            } catch {
+                showAlertMessage(title: "좋아요 반영에 실패했습니다.") {
+                    return
+                }
+            }
         }
+        
+        
+        
+        
     }
+   
     
-    func changeNavBarButton() {
+    
+    func changeNavBarButton(like: Bool) {
         
         if like {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
-        } else {
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+        } else {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
         }
     }
     

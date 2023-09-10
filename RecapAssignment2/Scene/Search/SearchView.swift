@@ -179,7 +179,7 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         
-
+        
         if let url = URL(string: data.image) {
             DispatchQueue.global().async {
                 let imgURL = try! Data(contentsOf: url)
@@ -198,8 +198,10 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if isExistRecord(productId: data.productID) != nil {
             cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            items[indexPath.row].like = true
         } else {
             cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            items[indexPath.row].like = false
         }
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)

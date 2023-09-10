@@ -99,11 +99,10 @@ extension SearchViewController {
 extension SearchViewController: CollectionViewProtocol {
     func didSelectRowItemAt(indexPath: IndexPath) {
         let item = mainView.items[indexPath.row]
-        
         let vc = DetailViewController()
-        let task = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
-        
-        vc.task = task
+        vc.item = item
+        let cell = mainView.collectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        vc.itemImage = cell?.imageView.image
         navigationController?.pushViewController(vc, animated: true)
         
         
@@ -162,9 +161,8 @@ extension SearchViewController: LikeButtonProtocol {
         
         if let task = repository.getItemByProductId(id: item.productID) { // 좋아요 해제
             do {
-                try repository.deleteItem(task)
                 try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
-                
+                try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
                 showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
                     return
@@ -177,7 +175,7 @@ extension SearchViewController: LikeButtonProtocol {
             }
             
         } else { // 좋아요 등록
-            let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName)
+            let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName, like: true)
             
             do {
                 try repository.createItem(like)

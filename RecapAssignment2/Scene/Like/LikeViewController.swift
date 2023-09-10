@@ -51,9 +51,12 @@ extension LikeViewController: CollectionViewProtocol {
         let data = items[indexPath.row]
         
         let vc = DetailViewController()
-        vc.task = data
+        //vc.task = data
         
-        
+        let item = ItemElement(title: data.title, image: data.image, lprice: data.price, mallName: data.mallName, productID: data.productId, like: data.like)
+        vc.item = item
+        let cell = mainView.collectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        vc.itemImage = cell?.imageView.image
         
         navigationController?.pushViewController(vc, animated: true)
 
