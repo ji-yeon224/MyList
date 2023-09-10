@@ -130,12 +130,11 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let search = searchBar.text?.trimmingCharacters(in: .whitespaces) else {
-            return
+        if let search = searchBar.text?.trimmingCharacters(in: .whitespaces) {
+            keyword = search
+            callRequest(query: search, sort: sortType, startIdx: startIdx)
+            view.endEditing(true)
         }
-        keyword = search
-        callRequest(query: search, sort: sortType, startIdx: startIdx)
-        view.endEditing(true)
         
     }
     
@@ -167,27 +166,27 @@ extension SearchViewController: LikeButtonProtocol {
                 try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
                 try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
-                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
-                }
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") { }
             } catch ImageError.removeImageError {
-                print("error")
-            } catch { }
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") { }
+            } catch {
+                showAlertMessage(title: "", message: "오류가 발생하였습니다.") { }
+            }
             
         } else { // 좋아요 등록
             let like = LikeItem(productId: item.productID, title: item.title.htmlToString(), image: item.image, price: item.lprice, mallName: item.mallName, like: true)
             
             do {
+                try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: image ?? UIImage(systemName: "cart")!)
                 try repository.createItem(like)
                 
-                try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: image ?? UIImage(systemName: "cart")!)
-                
-                
             } catch DataBaseError.createError {
-                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {
-                }
+                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {}
             } catch ImageError.saveImageError {
-                print("error") // 이미지 저장 실패 시 처리 어떻게?
-            } catch { }
+                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {}
+            } catch {
+                showAlertMessage(title: "", message: "오류가 발생하였습니다.") { }
+            }
         }
         
         

@@ -14,7 +14,12 @@ class Constants {
         static let text = UIColor.white
         static let tintColor = UIColor.white
         static let subText = UIColor.lightGray
-        
     }
     
+    enum Design {
+        static let cornerRadius: CGFloat = 10
+        static let borderWidth: CGFloat = 1
+    }
+    
+  
 }

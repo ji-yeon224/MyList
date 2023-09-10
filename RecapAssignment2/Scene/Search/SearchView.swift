@@ -183,9 +183,15 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let url = URL(string: data.image) {
             DispatchQueue.global().async {
-                let imgURL = try! Data(contentsOf: url)
+                
+                let imgURL = try? Data(contentsOf: url)
                 DispatchQueue.main.async {
-                    cell.imageView.image = UIImage(data: imgURL)
+                    if let imgURL = imgURL {
+                        cell.imageView.image = UIImage(data: imgURL)
+                    }else {
+                        cell.imageView.image = UIImage(systemName: "cart")
+                    }
+                    
                 }
             }
            

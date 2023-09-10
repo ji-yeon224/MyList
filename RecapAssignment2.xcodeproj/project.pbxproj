@@ -25,7 +25,6 @@
 		CEA65D082AA9ED1E00B6CDA4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */; };
 		CEA65D0E2AA9F40E00B6CDA4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */; };
 		CEA65D102AA9F80E00B6CDA4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D0F2AA9F80E00B6CDA4 /* SearchBar.swift */; };
-		CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D112AAA0A8E00B6CDA4 /* Design.swift */; };
 		CEA65D142AAA0B5B00B6CDA4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D132AAA0B5B00B6CDA4 /* CollectionViewCell.swift */; };
 		CEA65D182AAA161500B6CDA4 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */; };
 		CEA65D1A2AAA191600B6CDA4 /* NumberFomatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */; };
@@ -70,7 +69,6 @@
 		CEA65D072AA9ED1E00B6CDA4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CEA65D0F2AA9F80E00B6CDA4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		CEA65D112AAA0A8E00B6CDA4 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		CEA65D132AAA0B5B00B6CDA4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection\U0010ViewCell.swift"; sourceTree = "<group>"; };
 		CEA65D172AAA161500B6CDA4 /* ItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemImageView.swift; path = ../../../../../../.Trash/ItemImageView.swift; sourceTree = "<group>"; };
 		CEA65D192AAA191600B6CDA4 /* NumberFomatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFomatter+Extension.swift"; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 			children = (
 				CEA65D302AAAE5D200B6CDA4 /* Extension */,
 				CEA65D0D2AA9F40E00B6CDA4 /* Constants.swift */,
-				CEA65D112AAA0A8E00B6CDA4 /* Design.swift */,
 				CEC437D12AAC6C5C00EB15FC /* LikeItemRepositoryType.swift */,
 				CEC437D32AAC813900EB15FC /* LikeButtonProtocol.swift */,
 				CEA65D2A2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift */,
@@ -387,7 +384,6 @@
 				CEA65D342AAAE6D900B6CDA4 /* ItemStruct.swift in Sources */,
 				CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */,
 				CEA65D3B2AAB862E00B6CDA4 /* String+Extension.swift in Sources */,
-				CEA65D122AAA0A8E00B6CDA4 /* Design.swift in Sources */,
 				CEA65D1E2AAA2CAF00B6CDA4 /* LikeButton.swift in Sources */,
 				CEC437DB2AACA7C300EB15FC /* TabbarController.swift in Sources */,
 				CEA65D2B2AAAE07C00B6CDA4 /* CollectionViewProtocol.swift in Sources */,

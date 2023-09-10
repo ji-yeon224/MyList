@@ -10,7 +10,6 @@ import Foundation
 enum ValidationError: Error {
     case invalidValue
     case isNotInt
-    
 }
 
 enum DataBaseError: Error {
@@ -24,4 +23,10 @@ enum DataBaseError: Error {
 enum ImageError: Error {
     case saveImageError
     case removeImageError
+}
+
+enum NetworkError: Error {
+    case connnectError
+    case invalidURL
+    case nonExistItem
 }

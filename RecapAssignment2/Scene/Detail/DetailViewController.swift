@@ -31,24 +31,32 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadWebView()
-        
-    }
-    
-    func loadWebView() {
-        guard let item = item else {
-            showAlertMessage(title: "", message: "해당 상품이 존재하지 않습니다.") {
-                self.navigationController?.popViewController(animated: true)
-            }
-            
-            return
-        }
-        let urlString = URL.makeDetailURL(productId: item.productID)
-        guard let url = URL(string: urlString) else {
+        do {
+            try loadWebView()
+        } catch NetworkError.nonExistItem {
             showAlertMessage(title: "", message: "URL 주소가 잘못되었습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
-            return
+        } catch NetworkError.invalidURL {
+            showAlertMessage(title: "", message: "URL 주소가 잘못되었습니다.") {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } catch {
+            showAlertMessage(title: "", message: "오류가 발생하였습니다.") {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+        
+    }
+    
+    private func loadWebView() throws {
+        guard let item = item else {
+            throw NetworkError.nonExistItem
+        }
+        let urlString = URL.makeDetailURL(productId: item.productID)
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
         }
         let request = URLRequest(url: url)
         mainView.webView.load(request)
@@ -59,19 +67,28 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
     override func configure() {
         super.configure()
         
-        guard let item = item else {
+        
+        setNavigationBar()
+        setNavigationItem()
+        changeNavBarButton(like: like)
+        
+        do {
+            try setValue()
+        } catch {
             showAlertMessage(title: "", message: "해당 상품이 존재하지 않습니다.") {
                 self.navigationController?.popViewController(animated: true)
             }
-            return
+        }
+    }
+    
+    private func setValue() throws {
+        guard let item = item else {
+            throw NetworkError.nonExistItem
         }
         
         title = item.title.htmlToString()
         like = item.like
         
-        setNavigationBar()
-        setNavigationItem()
-        changeNavBarButton(like: like)
     }
     
     private func setNavigationBar() {
@@ -92,28 +109,40 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
     }
     
     @objc private func likeButtonClicked() {
-        guard let item = item else {
-            self.navigationController?.popViewController(animated: true)
-            return
-        }
+        
+        
         
         like.toggle()
         print(like)
         changeNavBarButton(like: like)
+        
+        do {
+            try setLikeButtonAction()
+        } catch {
+            showAlertMessage(title: "", message: "오류가 발생하였습니다.") { }
+        }
+        
+        
+        
+        
+    }
+    
+    private func setLikeButtonAction() throws {
+        guard let item = item else {
+            self.navigationController?.popViewController(animated: true)
+            throw ValidationError.invalidValue
+        }
         
         if let task = repository.getItemByProductId(id: item.productID) { //이미 좋아요 누른 목록
             do {
                 try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
                 try repository.deleteItem(task)
             } catch DataBaseError.deleteError {
-                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") {
-                    return
-                }
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") { }
             } catch ImageError.removeImageError {
-                print("error")
-                return
+                showAlertMessage(title: "", message: "좋아요 취소를 실패하였습니다.") { }
             } catch {
-                return
+                
             }
             
         } else { // 좋아요 등록
@@ -122,14 +151,13 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
                 try repository.createItem(task)
                 try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: itemImage ?? UIImage(systemName: "cart")!)
             } catch {
-                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") {
-                    return
-                }
+                
+                showAlertMessage(title: "", message: "좋아요 반영에 실패했습니다.") { }
             }
         }
-        
-        
     }
+    
+    
     private func changeNavBarButton(like: Bool) {
         
         if like {
