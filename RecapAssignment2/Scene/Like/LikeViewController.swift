@@ -12,7 +12,9 @@ class LikeViewController: BaseViewController {
     
     private let mainView = LikeView()
     private let repository = LikeItemRepository()
+    private let imageFileManager = ImageFileManager()
     var searchResult: Results<LikeItem>?
+    var num = 1
     
     override func loadView() {
         mainView.cellDelegate = self
@@ -21,7 +23,9 @@ class LikeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         mainView.collectionView.reloadData()
+        num = 2
     }
     
     override func viewDidLoad() {
@@ -35,6 +39,7 @@ class LikeViewController: BaseViewController {
     override func configure() {
         self.hideKeyboardWhenTappedAround()
         mainView.items = repository.fetch()
+        
     }
     
 }
@@ -63,12 +68,18 @@ extension LikeViewController: LikeButtonProtocol {
         let item = items[indexPath.row]
         
         do {
+            try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productId))
             try repository.deleteItem(item)
             mainView.collectionView.reloadData()
-        } catch {
+        } catch DataBaseError.deleteError {
             showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
                 return
             }
+        } catch ImageError.removeImageError {
+            print("error")
+            return
+        } catch {
+            return
         }
     }
 }

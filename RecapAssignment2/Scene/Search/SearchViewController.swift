@@ -19,6 +19,7 @@ final class SearchViewController: BaseViewController {
     var startIdx = 1
     
     private let repository = LikeItemRepository()
+    private let imageFileManager = ImageFileManager()
     
     override func loadView() {
         mainView.cellDelegate = self
@@ -162,7 +163,7 @@ extension SearchViewController: LikeButtonProtocol {
         if let task = repository.getItemByProductId(id: item.productID) { // 좋아요 해제
             do {
                 try repository.deleteItem(task)
-                try removeImageFromDocument(filename: getFileName(productId: item.productID))
+                try imageFileManager.removeImageFromDocument(filename: imageFileManager.getFileName(productId: item.productID))
                 
             } catch DataBaseError.deleteError {
                 showAlertMessage(title: "좋아요 취소를 실패하였습니다.") {
@@ -181,7 +182,7 @@ extension SearchViewController: LikeButtonProtocol {
             do {
                 try repository.createItem(like)
                 
-                try saveImageToDocument(fileName: getFileName(productId: item.productID), image: image ?? UIImage(systemName: "cart")!)
+                try imageFileManager.saveImageToDocument(fileName: imageFileManager.getFileName(productId: item.productID), image: image ?? UIImage(systemName: "cart")!)
                 
                 
             } catch DataBaseError.createError {

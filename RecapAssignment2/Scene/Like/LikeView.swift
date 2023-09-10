@@ -13,7 +13,10 @@ class LikeView: BaseView {
     var cellDelegate: CollectionViewProtocol?
     var btnDelegate: LikeButtonProtocol?
     
+    private let imageFileManager = ImageFileManager()
+    
     var items: Results<LikeItem>?
+    var images: [String : UIImage]?
     
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
@@ -86,20 +89,10 @@ extension LikeView: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.priceLabel.text = data.price
         }
         
-        
 
-        if let url = URL(string: data.image) {
-            DispatchQueue.global().async {
-                let imgURL = try! Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    cell.imageView.image = UIImage(data: imgURL)
-                }
-            }
-           
-            
-        } else {
-            cell.imageView.image = UIImage(systemName: "cart")
-        }
+        
+        cell.imageView.image = imageFileManager.loadImageFromDocument(fileName: imageFileManager.getFileName(productId: data.productId))
+        
         
         cell.likeButton.setImage(UIImage(systemName: "heart.fill")!, for: .normal)
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
