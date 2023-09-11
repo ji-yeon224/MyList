@@ -179,28 +179,16 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.priceLabel.text = data.lprice
         }
         
-        
-        
-        if let url = URL(string: data.image) {
-            DispatchQueue.global().async {
-                
-                let imgURL = try? Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    if let imgURL = imgURL {
-                        cell.imageView.image = UIImage(data: imgURL)
-                    }else {
-                        cell.imageView.image = UIImage(systemName: "cart")
-                    }
-                    
-                }
+        // 이미지 로드
+        do {
+            try setImage(imageURL: data.image) { image in
+                cell.imageView.image = image
             }
-           
-            
-        } else {
+        } catch {
             cell.imageView.image = UIImage(systemName: "cart")
         }
-       
         
+       
         // 좋아요 목록에 이미 존재한다면
         
         if isExistRecord(productId: data.productID) != nil {
@@ -213,6 +201,30 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(_ :)), for: .touchUpInside)
         return cell
+    }
+    
+    private func setImage(imageURL: String, handler: @escaping ((UIImage?) -> Void)) throws {
+        if let url = URL(string: imageURL) {
+
+            guard let url = URL(string: imageURL) else {
+                handler(nil)
+                throw ImageError.LoadImageError
+            }
+            DispatchQueue.global().async {
+                do {
+                    let imgURL = try Data(contentsOf: url)
+                    DispatchQueue.main.async {
+                        handler(UIImage(data: imgURL))
+                        
+                    }
+                } catch {
+                    handler(nil)
+                }
+                
+            }
+           
+            
+        }
     }
     
     // 좋아요 버튼 클릭 액션

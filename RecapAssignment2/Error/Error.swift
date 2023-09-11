@@ -23,6 +23,7 @@ enum DataBaseError: Error {
 enum ImageError: Error {
     case saveImageError
     case removeImageError
+    case LoadImageError
 }
 
 enum NetworkError: Error {
