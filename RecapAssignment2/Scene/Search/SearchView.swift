@@ -10,8 +10,8 @@ import RealmSwift
 
 final class SearchView: BaseView {
     
-    var cellDelegate: CollectionViewProtocol?
-    var btnDelegate: LikeButtonProtocol?
+    weak var cellDelegate: CollectionViewProtocol?
+    weak var btnDelegate: LikeButtonProtocol?
     
     var items: [ItemElement] = []
     private let repository = LikeItemRepository()

@@ -10,8 +10,8 @@ import RealmSwift
 
 final class LikeView: BaseView {
     
-    var cellDelegate: CollectionViewProtocol?
-    var btnDelegate: LikeButtonProtocol?
+    weak var cellDelegate: CollectionViewProtocol?
+    weak var btnDelegate: LikeButtonProtocol?
     
     private let imageFileManager = ImageFileManager()
     

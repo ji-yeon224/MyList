@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol LikeButtonProtocol {
+protocol LikeButtonProtocol: AnyObject {
     func buttonClickedAction(indexPath: IndexPath, image: UIImage?)
 }
