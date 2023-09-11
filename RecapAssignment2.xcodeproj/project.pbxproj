@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE72B6F92AAE90F100CC5F7E /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = CE72B6F82AAE90F100CC5F7E /* SkeletonView */; };
 		CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */; };
 		CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */; };
 		CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD32AA9D3D900B6CDA4 /* ViewController.swift */; };
@@ -105,6 +106,7 @@
 				CEA65CF82AA9DCAA00B6CDA4 /* Alamofire in Frameworks */,
 				CEA65CF22AA9DC6800B6CDA4 /* RealmSwift in Frameworks */,
 				CEA65CF02AA9DC6800B6CDA4 /* Realm in Frameworks */,
+				CE72B6F92AAE90F100CC5F7E /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +301,7 @@
 				CEA65CF12AA9DC6800B6CDA4 /* RealmSwift */,
 				CEA65CF42AA9DC9600B6CDA4 /* SnapKit */,
 				CEA65CF72AA9DCAA00B6CDA4 /* Alamofire */,
+				CE72B6F82AAE90F100CC5F7E /* SkeletonView */,
 			);
 			productName = RecapAssignment2;
 			productReference = CEA65CCC2AA9D3D900B6CDA4 /* RecapAssignment2.app */;
@@ -332,6 +335,7 @@
 				CEA65CEE2AA9DC6800B6CDA4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				CEA65CF32AA9DC9600B6CDA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CEA65CF62AA9DCAA00B6CDA4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CE72B6F72AAE90F100CC5F7E /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = CEA65CCD2AA9D3D900B6CDA4 /* Products */;
 			projectDirPath = "";
@@ -613,6 +617,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE72B6F72AAE90F100CC5F7E /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CEA65CEE2AA9DC6800B6CDA4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -640,6 +652,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE72B6F82AAE90F100CC5F7E /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE72B6F72AAE90F100CC5F7E /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
 		CEA65CEF2AA9DC6800B6CDA4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEA65CEE2AA9DC6800B6CDA4 /* XCRemoteSwiftPackageReference "realm-swift" */;

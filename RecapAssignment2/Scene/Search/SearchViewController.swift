@@ -17,6 +17,7 @@ final class SearchViewController: BaseViewController {
     private let sortAllCase = Sort.allCases
     private var keyword = ""
     private var startIdx = 1
+    private var total = 0
     
     private let repository = LikeItemRepository()
     private let imageFileManager = ImageFileManager()
@@ -78,8 +79,8 @@ extension SearchViewController {
         do {
             try NaverAPI.shared.callShoppingRequest(endPoint: .shop, query: query, sort: sort, startIdx: startIdx) { data in
                 
-                
-                if data.items.count == 0 {
+                self.total = data.total
+                if data.items.count == 0 && startIdx == 1{
                     self.showAlertMessage(title: "", message: "검색 결과가 없습니다.") { }
                 }
                 self.mainView.items.append(contentsOf: data.items)
@@ -88,6 +89,7 @@ extension SearchViewController {
                     self.mainView.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
             } faliureHandler: { error in
+                print(error)
                 self.showAlertMessage(title: "NetWorkError", message: "인터넷 연결 확인 후 다시 시도해주세요.") { }
             }
             
@@ -117,11 +119,19 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if mainView.items.count - 1 == indexPath.row {
-                startIdx += 30
-                callRequest(query: keyword, sort: sortType, startIdx: startIdx)
+            
+            if mainView.items.count - 6 == indexPath.row {
+                
+                if total >= startIdx && startIdx + 30 <= 1000 {
+                    startIdx += 30
+                    callRequest(query: keyword, sort: sortType, startIdx: startIdx)
+                }
+                
             }
         }
+        
+        
+        
         
     }
     
@@ -132,6 +142,13 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let search = searchBar.text?.trimmingCharacters(in: .whitespaces) {
             keyword = search
+            
+            if mainView.items.count > 0 {
+                startIdx = 1
+                total = 0
+                mainView.items.removeAll()
+            }
+            
             callRequest(query: search, sort: sortType, startIdx: startIdx)
             view.endEditing(true)
         }
@@ -139,9 +156,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         if searchBar.text == "" {
             keyword = ""
             startIdx = 1
+            total = 0
             mainView.items.removeAll()
             mainView.collectionView.reloadData()
         }
