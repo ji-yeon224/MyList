@@ -33,7 +33,7 @@ final class SearchViewController: BaseViewController {
         
         mainView.searchBar.delegate = self
         mainView.collectionView.prefetchDataSource = self
-        navigationItem.title = "상품 목록"
+        navigationItem.title = "상품 검색"
         //print(repository.getRealmFilePath())
     }
     

@@ -7,11 +7,12 @@
 
 import UIKit
 import WebKit
-import RealmSwift
+import Network
+
 
 final class DetailViewController: BaseViewController, WKUIDelegate {
     
-    
+    private let monitor = NWPathMonitor()
     var item: ItemElement?
     var itemImage: UIImage?
     
@@ -50,18 +51,6 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
         
     }
     
-    private func loadWebView() throws {
-        guard let item = item else {
-            throw NetworkError.nonExistItem
-        }
-        let urlString = URL.makeDetailURL(productId: item.productID)
-        guard let url = URL(string: urlString) else {
-            throw NetworkError.invalidURL
-        }
-        let request = URLRequest(url: url)
-        mainView.webView.load(request)
-    }
-    
     
     override func configure() {
         super.configure()
@@ -78,6 +67,57 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
         setNavigationItem()
         changeNavBarButton(like: like)
     }
+    
+    
+    
+    
+}
+
+// 웹뷰 로드 관련
+extension DetailViewController {
+    
+    private func loadWebView() throws {
+        guard let item = item else {
+            throw NetworkError.nonExistItem
+        }
+        let urlString = URL.makeDetailURL(productId: item.productID)
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+        startMonitoring(url: url)
+    }
+    
+    // 네트워크 연결 모니터링
+    private func startMonitoring(url: URL) {
+        
+        monitor.start(queue: .global())
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                let request = URLRequest(url: url)
+                
+                // 연결이 끊겼다가 다시 연결될 경우 페이지 reload
+                DispatchQueue.main.async {
+                    self.mainView.webView.load(request)
+                }
+                return
+                
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlertMessage(title: "인터넷 연결이 원활하지 않습니다.", message: "인터넷 연결을 확인 해주세요.") {
+                        
+                    }
+                }
+            }
+            
+        }
+    }
+    
+}
+
+
+
+// Nav Bar 관련
+extension DetailViewController {
     
     private func setValue() throws {
         guard let item = item else {
@@ -161,6 +201,5 @@ final class DetailViewController: BaseViewController, WKUIDelegate {
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
         }
     }
-    
     
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE72B6F92AAE90F100CC5F7E /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = CE72B6F82AAE90F100CC5F7E /* SkeletonView */; };
+		CE72B7322AAED17E00CC5F7E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B7312AAED17E00CC5F7E /* Network.swift */; };
 		CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */; };
 		CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */; };
 		CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD32AA9D3D900B6CDA4 /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE72B7312AAED17E00CC5F7E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CEA65CCC2AA9D3D900B6CDA4 /* RecapAssignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecapAssignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				CEA65D312AAAE5E700B6CDA4 /* URL+Extension.swift */,
 				CEA65D3A2AAB862D00B6CDA4 /* String+Extension.swift */,
 				CEC437DC2AAD538500EB15FC /* FileManager+Extension.swift */,
+				CE72B7312AAED17E00CC5F7E /* Network.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE72B7322AAED17E00CC5F7E /* Network.swift in Sources */,
 				CEA65D2D2AAAE56B00B6CDA4 /* NaverAPI.swift in Sources */,
 				CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */,
 				CEA65D242AAA9D8C00B6CDA4 /* APIKey.swift in Sources */,
