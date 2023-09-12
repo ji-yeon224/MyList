@@ -25,7 +25,9 @@ final class TabbarController: UITabBarController {
         vc2.tabBarItem.image = UIImage(systemName: "heart")
         
         let nav1 = UINavigationController(rootViewController: vc1)
+        nav1.navigationBar.titleTextAttributes = [.foregroundColor: Constants.Color.tintColor]
         let nav2 = UINavigationController(rootViewController: vc2)
+        nav2.navigationBar.titleTextAttributes = [.foregroundColor: Constants.Color.tintColor]
         
         setViewControllers([nav1, nav2], animated: true)
         

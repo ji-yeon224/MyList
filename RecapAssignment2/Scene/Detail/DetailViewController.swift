@@ -131,11 +131,13 @@ extension DetailViewController {
     
     private func setNavigationBar() {
         let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.backgroundColor = Constants.Color.background
-        navigationController?.navigationBar.tintColor = Constants.Color.tintColor
+        appearance.backgroundColor = Constants.Color.background
+        appearance.titleTextAttributes = [.foregroundColor: Constants.Color.tintColor]
+        
         navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = Constants.Color.tintColor
     }
     
     private func setNavigationItem() {
