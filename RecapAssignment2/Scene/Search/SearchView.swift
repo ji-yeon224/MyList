@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Kingfisher
 
 final class SearchView: BaseView {
     
@@ -180,13 +181,20 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         // 이미지 로드
-        do {
-            try setImage(imageURL: data.image) { image in
-                cell.imageView.image = image
-            }
-        } catch {
-            cell.imageView.image = UIImage(systemName: "cart")
+        if let url = URL(string: data.image) {
+            cell.imageView.kf.setImage(with: url)
+        } else {
+            cell.imageView.backgroundColor = .white
         }
+        
+        
+//        do {
+//            try setImage(imageURL: data.image) { image in
+//                cell.imageView.image = image
+//            }
+//        } catch {
+//            cell.imageView.image = UIImage(systemName: "cart")
+//        }
         
        
         // 좋아요 목록에 이미 존재한다면
@@ -210,6 +218,7 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
                 handler(nil)
                 throw ImageError.LoadImageError
             }
+            
             DispatchQueue.global().async {
                 do {
                     let imgURL = try Data(contentsOf: url)

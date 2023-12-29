@@ -10,6 +10,7 @@
 		CE72B6F92AAE90F100CC5F7E /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = CE72B6F82AAE90F100CC5F7E /* SkeletonView */; };
 		CE72B7322AAED17E00CC5F7E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B7312AAED17E00CC5F7E /* Network.swift */; };
 		CE95DEF42B3EA38F0073A197 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95DEF32B3EA38F0073A197 /* ItemImageView.swift */; };
+		CE95DEF72B3EA5570073A197 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE95DEF62B3EA5570073A197 /* Kingfisher */; };
 		CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */; };
 		CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */; };
 		CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD32AA9D3D900B6CDA4 /* ViewController.swift */; };
@@ -104,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE95DEF72B3EA5570073A197 /* Kingfisher in Frameworks */,
 				CEA65CF52AA9DC9600B6CDA4 /* SnapKit in Frameworks */,
 				CEA65CF82AA9DCAA00B6CDA4 /* Alamofire in Frameworks */,
 				CEA65CF22AA9DC6800B6CDA4 /* RealmSwift in Frameworks */,
@@ -305,6 +307,7 @@
 				CEA65CF42AA9DC9600B6CDA4 /* SnapKit */,
 				CEA65CF72AA9DCAA00B6CDA4 /* Alamofire */,
 				CE72B6F82AAE90F100CC5F7E /* SkeletonView */,
+				CE95DEF62B3EA5570073A197 /* Kingfisher */,
 			);
 			productName = RecapAssignment2;
 			productReference = CEA65CCC2AA9D3D900B6CDA4 /* RecapAssignment2.app */;
@@ -339,6 +342,7 @@
 				CEA65CF32AA9DC9600B6CDA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CEA65CF62AA9DCAA00B6CDA4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CE72B6F72AAE90F100CC5F7E /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				CE95DEF52B3EA5570073A197 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = CEA65CCD2AA9D3D900B6CDA4 /* Products */;
 			projectDirPath = "";
@@ -631,6 +635,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		CE95DEF52B3EA5570073A197 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
 		CEA65CEE2AA9DC6800B6CDA4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -662,6 +674,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE72B6F72AAE90F100CC5F7E /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
+		};
+		CE95DEF62B3EA5570073A197 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE95DEF52B3EA5570073A197 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		CEA65CEF2AA9DC6800B6CDA4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
