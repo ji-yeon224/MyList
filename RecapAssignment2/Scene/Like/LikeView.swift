@@ -16,7 +16,6 @@ final class LikeView: BaseView {
     private let imageFileManager = ImageFileManager()
     
     var items: Results<LikeItem>?
-    var images: [String : UIImage]?
     
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout())
