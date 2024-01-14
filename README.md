@@ -1,31 +1,36 @@
 
-![[제목 없음 8 1.png|150]]
+<img src = "https://github.com/ji-yeon224/MyList/assets/69784492/d6e3d403-1c7a-4442-b220-094133a924f0" width="18%"/>
 
 # 🛒 MyList
 
-![[Group 12.png]]
+<img src = "https://github.com/ji-yeon224/MyList/assets/69784492/936464db-0e19-48d4-b399-4bc8b30aca52" width="80%"/>
 
+</br>
 
 ## 🗓️ 프로젝트
 - 최소 버전 iOS 13.0
 - 23.09.07 ~ 23.09.11 (5일)
 - 구매하고 싶은 나의 쇼핑 리스트를 검색하고 저장할 수 있는 어플리케이션
+</br>
 
 ## 💻 기술 스택
 - `MVC`
 - `UIKit`,  `SnapKit`
 - `Alamofire`, `Codable`, `Realm`, `Kingfisher`, `NWPathMonitor`
+</br>
 
 ## 📖 주요 기능
 - 네이버 쇼핑 API를 활용해 상품 검색과 검색 결과 정렬
 - 좋아요 버튼으로 나의 쇼핑 목록에 저장 또는 삭제
 - 나의 쇼핑 목록에서 상품 검색 기능
+</br>
 
 ## 💡 핵심 기술
 - CollectionView `PrefetchForItems를` 활용하여 **페이지네이션** 구현
 -  `RealmDB`를 활용하여 구매하고 싶은 상품을 저장하여 검색, 조회 기능 구현
 - `Kingfisher`를 활용하여 상품 이미지 다운로드와 **다운샘플링 구현**
 - `NWPathMonitor`를 활용하여 네트워크 연결 상태 모니터링
+</br>
 
 ## 🚨 트러블 슈팅
 ### 이미지 다운로드 속도 저하
