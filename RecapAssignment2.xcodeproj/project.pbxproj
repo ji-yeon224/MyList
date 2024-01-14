@@ -11,6 +11,7 @@
 		CE72B7322AAED17E00CC5F7E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B7312AAED17E00CC5F7E /* Network.swift */; };
 		CE95DEF42B3EA38F0073A197 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95DEF32B3EA38F0073A197 /* ItemImageView.swift */; };
 		CE95DEF72B3EA5570073A197 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE95DEF62B3EA5570073A197 /* Kingfisher */; };
+		CE95DEF92B3EBF5A0073A197 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95DEF82B3EBF5A0073A197 /* UIImage+Extension.swift */; };
 		CEA65CD02AA9D3D900B6CDA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */; };
 		CEA65CD22AA9D3D900B6CDA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */; };
 		CEA65CD42AA9D3D900B6CDA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA65CD32AA9D3D900B6CDA4 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		CE72B7312AAED17E00CC5F7E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CE95DEF32B3EA38F0073A197 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
+		CE95DEF82B3EBF5A0073A197 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CEA65CCC2AA9D3D900B6CDA4 /* RecapAssignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecapAssignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA65CCF2AA9D3D900B6CDA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA65CD12AA9D3D900B6CDA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				CEA65D3A2AAB862D00B6CDA4 /* String+Extension.swift */,
 				CEC437DC2AAD538500EB15FC /* FileManager+Extension.swift */,
 				CE72B7312AAED17E00CC5F7E /* Network.swift */,
+				CE95DEF82B3EBF5A0073A197 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				CE95DEF42B3EA38F0073A197 /* ItemImageView.swift in Sources */,
 				CEC437C62AAC101700EB15FC /* Sort.swift in Sources */,
 				CEC437D02AAC67AD00EB15FC /* LikeItemRepository.swift in Sources */,
+				CE95DEF92B3EBF5A0073A197 /* UIImage+Extension.swift in Sources */,
 				CEA65D372AAAF2F400B6CDA4 /* Error.swift in Sources */,
 				CEC437D42AAC813900EB15FC /* LikeButtonProtocol.swift in Sources */,
 			);
@@ -475,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -529,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

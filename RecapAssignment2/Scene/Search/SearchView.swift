@@ -182,7 +182,14 @@ extension SearchView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         // 이미지 로드
         if let url = URL(string: data.image) {
-            cell.imageView.kf.setImage(with: url)
+            cell.imageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let data):
+                    cell.imageView.image = data.image.downSample(to: 100)
+                case .failure(_):
+                    cell.imageView.backgroundColor = .white
+                }
+            }
         } else {
             cell.imageView.backgroundColor = .white
         }
