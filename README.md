@@ -15,8 +15,8 @@
 
 ## 💻 기술 스택
 - `MVC`
-- `UIKit`,  `SnapKit`
-- `Alamofire`, `Codable`, `Realm`, `Kingfisher`, `NWPathMonitor`
+- `UIKit`, `WebKit` 
+- `SnapKit`, `Alamofire`, `Codable`, `Realm`, `Kingfisher`, `NWPathMonitor`
 </br>
 
 ## 📖 주요 기능
@@ -26,10 +26,11 @@
 </br>
 
 ## 💡 핵심 기술
-- CollectionView `PrefetchForItems를` 활용하여 **페이지네이션** 구현
+-  CollectionView `PrefetchForItems를` 활용하여 **페이지네이션** 구현
 -  `RealmDB`를 활용하여 구매하고 싶은 상품을 저장하여 검색, 조회 기능 구현
 - `Kingfisher`를 활용하여 상품 이미지 다운로드와 **다운샘플링 구현**
 - `NWPathMonitor`를 활용하여 네트워크 연결 상태 모니터링
+- `WebKit`을 통해 외부 링크를 앱 내부에서 로드
 </br>
 
 ## 🚨 트러블 슈팅
